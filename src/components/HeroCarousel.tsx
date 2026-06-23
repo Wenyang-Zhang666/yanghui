@@ -40,7 +40,7 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: any }
 
   const slides = [
     {
-      image: '/yanghui/images/banner.jpg',
+      image: '/yanghui/images/new-banner.jpg',
       title: dict.home.slogan,
       subtitle: lang === 'zh' ? '引领全球航运与港口企业的数字化转型' : 'Leading the digital transformation of global shipping and port enterprises',
       align: 'center'

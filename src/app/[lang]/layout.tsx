@@ -17,6 +17,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: 'zh
   };
 }
 
+export function generateStaticParams() {
+  return [{ lang: 'zh' }, { lang: 'en' }];
+}
+
 export default async function RootLayout({
   children,
   params,

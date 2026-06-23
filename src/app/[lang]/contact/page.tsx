@@ -12,9 +12,9 @@ export default async function Contact({ params }: { params: Promise<{ lang: stri
       {/* Hero Header */}
       <div className="relative h-[40vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-slate-900 mb-20">
         <div className="absolute inset-0 z-0">
-          <Image src="/images/banner.jpg" alt="Contact Hero" fill className="object-cover opacity-40 grayscale" />
+          <Image src="/yanghui/images/banner.jpg" alt="Contact Hero" fill className="object-cover opacity-40 grayscale" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-[0.05]"></div>
+          <div className="absolute inset-0 bg-[url('/yanghui/images/grid.svg')] opacity-[0.05]"></div>
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">{dict.contact.title}</h1>
@@ -73,7 +73,7 @@ export default async function Contact({ params }: { params: Promise<{ lang: stri
           {/* Contact Form */}
           <div className="bg-white border border-gray-200 p-10 md:p-12 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-400"></div>
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[url('/images/grid.svg')] opacity-[0.05] pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[url('/yanghui/images/grid.svg')] opacity-[0.05] pointer-events-none"></div>
             
             <h2 className="text-3xl font-black text-slate-900 tracking-tight mb-8">{dict.contact.message}</h2>
             <ContactForm dict={dict} />

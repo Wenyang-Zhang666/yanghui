@@ -40,19 +40,19 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: any }
 
   const slides = [
     {
-      image: '/images/banner.jpg',
+      image: '/yanghui/images/banner.jpg',
       title: dict.home.slogan,
       subtitle: lang === 'zh' ? '引领全球航运与港口企业的数字化转型' : 'Leading the digital transformation of global shipping and port enterprises',
       align: 'center'
     },
     {
-      image: '/images/ship.jpg',
+      image: '/yanghui/images/ship.jpg',
       title: lang === 'zh' ? '卓越的船舶运营服务' : 'Excellent Ship Operations',
       subtitle: lang === 'zh' ? '一站式、高标准的船舶修理、机务管理与备件供应' : 'One-stop, high-standard ship repair, technical management and spare parts supply',
       align: 'left'
     },
     {
-      image: '/images/tech.jpg',
+      image: '/yanghui/images/tech.jpg',
       title: lang === 'zh' ? '创新的港口信息技术' : 'Innovative Port Technology',
       subtitle: lang === 'zh' ? '专注网络安全与智能监控，重塑港口运营生态' : 'Focusing on cybersecurity and intelligent monitoring to reshape port operations',
       align: 'right'
@@ -83,7 +83,7 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: any }
 
             {/* Industrial Gradient Overlays */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/80 z-10"></div>
-            <div className="absolute inset-0 bg-[url('/images/grid.svg')] bg-repeat opacity-[0.03] mix-blend-overlay z-10"></div>
+            <div className="absolute inset-0 bg-[url('/yanghui/images/grid.svg')] bg-repeat opacity-[0.03] mix-blend-overlay z-10"></div>
             <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent z-10"></div>
 
             {/* Content Content */}

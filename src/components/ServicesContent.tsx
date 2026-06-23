@@ -35,9 +35,9 @@ export default function ServicesContent({ lang, dict }: { lang: string; dict: an
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="absolute inset-0 z-0"
         >
-          <Image src="/images/repair.jpg" alt="Services Hero" fill className="object-cover opacity-50 grayscale-[50%]" priority />
+          <Image src="/yanghui/images/repair.jpg" alt="Services Hero" fill className="object-cover opacity-50 grayscale-[50%]" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-[0.05]"></div>
+          <div className="absolute inset-0 bg-[url('/yanghui/images/grid.svg')] opacity-[0.05]"></div>
         </motion.div>
         
         <motion.div 
@@ -81,7 +81,7 @@ export default function ServicesContent({ lang, dict }: { lang: string; dict: an
             <div className="grid lg:grid-cols-12 gap-0 border border-white/10 shadow-2xl">
               <div className="lg:col-span-5 relative h-[600px] overflow-hidden group">
                 <Image
-                  src="/images/repair.jpg"
+                  src="/yanghui/images/repair.jpg"
                   alt={dict.services.ship.title}
                   fill
                   className="object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
@@ -152,7 +152,7 @@ export default function ServicesContent({ lang, dict }: { lang: string; dict: an
               
               <div className="lg:col-span-5 relative h-[600px] overflow-hidden group order-1 lg:order-2">
                 <Image
-                  src="/images/tech.jpg"
+                  src="/yanghui/images/tech.jpg"
                   alt={dict.services.port.title}
                   fill
                   className="object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"

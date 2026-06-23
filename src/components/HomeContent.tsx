@@ -46,7 +46,7 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: any })
 
       {/* 2. Premium About Summary - Industrial Style */}
       <section className="py-32 relative bg-white border-b border-gray-200">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[url('/images/grid.svg')] opacity-[0.03] pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[url('/yanghui/images/grid.svg')] opacity-[0.03] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <motion.div 
@@ -83,7 +83,7 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: any })
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-blue-600 translate-x-[2px] translate-y-[2px]"></div>
               </div>
               <div className="relative h-[600px] w-full overflow-hidden bg-slate-100">
-                <Image src="/images/tech.jpg" alt="About Us" fill className="object-cover grayscale-[20%] contrast-125" />
+                <Image src="/yanghui/images/tech.jpg" alt="About Us" fill className="object-cover grayscale-[20%] contrast-125" />
                 {/* Tech overlay effect */}
                 <div className="absolute inset-0 bg-blue-900/10 mix-blend-multiply"></div>
               </div>
@@ -105,7 +105,7 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: any })
 
       {/* 3. Stats Counter Section - Industrial Dark */}
       <section className="py-24 bg-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-[0.05]"></div>
+        <div className="absolute inset-0 bg-[url('/yanghui/images/grid.svg')] opacity-[0.05]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8">
             {[
@@ -159,7 +159,7 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: any })
               className="group bg-white border border-gray-200 overflow-hidden hover:border-blue-500 transition-colors duration-300 flex flex-col h-full"
             >
               <div className="relative h-[400px] w-full overflow-hidden">
-                <Image src="/images/ship.jpg" alt={dict.home.shipOperations} fill className="object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" />
+                <Image src="/yanghui/images/ship.jpg" alt={dict.home.shipOperations} fill className="object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" />
                 <div className="absolute top-6 right-6 bg-white/90 backdrop-blur px-4 py-2 text-xs font-bold tracking-widest uppercase">01</div>
               </div>
               <div className="p-10 flex flex-col flex-grow relative bg-white">
@@ -185,7 +185,7 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: any })
               className="group bg-white border border-gray-200 overflow-hidden hover:border-blue-500 transition-colors duration-300 flex flex-col h-full"
             >
               <div className="relative h-[400px] w-full overflow-hidden">
-                <Image src="/images/repair.jpg" alt={dict.home.portTechnology} fill className="object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" />
+                <Image src="/yanghui/images/repair.jpg" alt={dict.home.portTechnology} fill className="object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" />
                 <div className="absolute top-6 right-6 bg-white/90 backdrop-blur px-4 py-2 text-xs font-bold tracking-widest uppercase">02</div>
               </div>
               <div className="p-10 flex flex-col flex-grow relative bg-white">
@@ -264,7 +264,7 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: any })
 
       {/* 7. Industrial CTA */}
       <section className="relative py-32 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-[0.05]"></div>
+        <div className="absolute inset-0 bg-[url('/yanghui/images/grid.svg')] opacity-[0.05]"></div>
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>

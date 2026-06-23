@@ -15,21 +15,21 @@ export default async function News({ params }: { params: Promise<{ lang: string 
       summary: lang === 'zh' 
         ? '本项目为上海农业农村委员会执法总队长兴2号趸船码头内装升级改造工程。改造内容涵盖11名船员换班临时居所、厨房、冷库、办公及多媒体会议室，全面满足中国船舶检验局(ZC)船检规范标准及各项海事环保规定，为船员提供高标准的舒适安全环境。' 
         : 'This project is the interior upgrade and renovation of Changxing No.2 Pontoon Wharf for the Shanghai Agricultural and Rural Commission Law Enforcement Corps. The scope covers temporary quarters for 11 crew members, kitchens, cold storage, offices, and multimedia conference rooms, fully meeting ZC standards and maritime environmental regulations.',
-      image: '/images/repair.jpg'
+      image: '/yanghui/images/repair.jpg'
     },
     {
       id: 2,
       title: lang === 'zh' ? '我司成功中标某大型港口网络安全加固项目' : 'Company Successfully Won the Bid for a Major Port Cybersecurity Hardening Project',
       date: '2026-05-12',
       summary: lang === 'zh' ? '近日，上海阳惠洋科技有限公司凭借过硬的技术实力和丰富的行业经验，成功中标某国内大型港口集团的工业控制系统网络安全加固项目。' : 'Recently, Shanghai Yanghuiyang Technology successfully won the bid for the ICS cybersecurity hardening project of a major domestic port group.',
-      image: '/images/tech.jpg'
+      image: '/yanghui/images/tech.jpg'
     },
     {
       id: 3,
       title: lang === 'zh' ? 'CCS规范智能监控管理软件V2.0正式发布' : 'CCS Compliant Intelligent Monitoring Management Software V2.0 Officially Released',
       date: '2026-04-20',
       summary: lang === 'zh' ? '经过研发团队的不懈努力，我司自主研发的智能监控管理软件迎来重大更新，V2.0版本在数据处理能力和预警准确率上均有显著提升。' : 'After unremitting efforts by the R&D team, our self-developed intelligent monitoring management software has received a major update.',
-      image: '/images/ship.jpg'
+      image: '/yanghui/images/ship.jpg'
     }
   ];
 
@@ -38,9 +38,9 @@ export default async function News({ params }: { params: Promise<{ lang: string 
       {/* Hero Header */}
       <div className="relative h-[40vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-slate-900 mb-20">
         <div className="absolute inset-0 z-0">
-          <Image src="/images/ship.jpg" alt="News Hero" fill className="object-cover opacity-40 grayscale" />
+          <Image src="/yanghui/images/ship.jpg" alt="News Hero" fill className="object-cover opacity-40 grayscale" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-[0.05]"></div>
+          <div className="absolute inset-0 bg-[url('/yanghui/images/grid.svg')] opacity-[0.05]"></div>
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">{dict.navigation.news}</h1>

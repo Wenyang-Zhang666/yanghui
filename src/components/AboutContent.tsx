@@ -29,9 +29,9 @@ export default function AboutContent({ lang, dict }: { lang: string; dict: any }
           transition={{ duration: 10, ease: "easeOut" }}
           className="absolute inset-0 z-0"
         >
-          <Image src="/images/tech.jpg" alt="About Hero" fill className="object-cover opacity-40 grayscale" priority />
+          <Image src="/yanghui/images/tech.jpg" alt="About Hero" fill className="object-cover opacity-40 grayscale" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-[url('/images/grid.svg')] opacity-[0.05]"></div>
+          <div className="absolute inset-0 bg-[url('/yanghui/images/grid.svg')] opacity-[0.05]"></div>
         </motion.div>
         
         <motion.div 
@@ -75,7 +75,7 @@ export default function AboutContent({ lang, dict }: { lang: string; dict: any }
             
             <div className="relative h-96 md:h-auto min-h-[500px] overflow-hidden group">
               <Image
-                src="/images/ship.jpg"
+                src="/yanghui/images/ship.jpg"
                 alt="Company Profile"
                 fill
                 className="object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"

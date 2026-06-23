@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+3:I[27767,["/yanghui/_next/static/chunks/11121i11madwc.js","/yanghui/_next/static/chunks/2s70rvc3aaaze.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":["$L2",null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_mm-9L0jt2Jz-Lsbcrgg7"}
+5:null
+2:E{"digest":"NEXT_REDIRECT;replace;/zh;307;"}

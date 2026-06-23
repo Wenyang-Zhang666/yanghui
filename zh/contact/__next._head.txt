@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[27767,["/yanghui/_next/static/chunks/11121i11madwc.js","/yanghui/_next/static/chunks/2s70rvc3aaaze.js"],"ViewportBoundary"]
+3:I[27767,["/yanghui/_next/static/chunks/11121i11madwc.js","/yanghui/_next/static/chunks/2s70rvc3aaaze.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[54176,["/yanghui/_next/static/chunks/11121i11madwc.js","/yanghui/_next/static/chunks/2s70rvc3aaaze.js"],"IconMark"]
+0:{"rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"上海阳惠洋科技有限公司 - 专业的船舶运营与港口信息化服务商"}],["$","meta","1",{"name":"description","content":"上海阳惠洋科技有限公司致力于为港口集团、船东、船舶管理公司提供船舶修理、机务管理、备件供应以及港口网络安全、智能监控软件等综合解决方案。"}],["$","meta","2",{"name":"keywords","content":"港口网络安全, 船舶运营服务, 船舶备件采购, 船岸数据集成, 上海阳惠洋科技"}],["$","link","3",{"rel":"icon","href":"/yanghui/favicon.ico?favicon.2vob68tjqpejf.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L5","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_mm-9L0jt2Jz-Lsbcrgg7"}

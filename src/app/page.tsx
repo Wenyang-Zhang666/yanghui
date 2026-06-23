@@ -1,14 +1,25 @@
-'use client';
+import { Metadata } from 'next';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+export const metadata: Metadata = {
+  title: '上海阳惠洋科技有限公司 | YHY TECH',
+  description: '上海阳惠洋科技有限公司官方网站',
+};
 
 export default function RootPage() {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.replace('/zh');
-  }, [router]);
-
-  return null;
+  return (
+    <html>
+      <head>
+        <meta httpEquiv="refresh" content="0; url=/yanghui/zh" />
+        <title>上海阳惠洋科技有限公司 | YHY TECH</title>
+      </head>
+      <body>
+        <p>Redirecting to <a href="/yanghui/zh">/yanghui/zh</a>...</p>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.location.href = '/yanghui/zh';`,
+          }}
+        />
+      </body>
+    </html>
+  );
 }

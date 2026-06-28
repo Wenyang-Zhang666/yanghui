@@ -2,172 +2,268 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Settings, Server, Wrench, Shield, Laptop, Database, Cpu, Activity, ArrowRight, Anchor, Network } from 'lucide-react';
 import Link from 'next/link';
+import {
+  Activity,
+  ArrowRight,
+  BadgeCheck,
+  ChartCandlestick,
+  Cpu,
+  Database,
+  FileSearch,
+  Handshake,
+  Laptop,
+  Network,
+  Radar,
+  Scale,
+  Server,
+  Settings,
+  Shield,
+  Ship,
+  Wrench,
+} from 'lucide-react';
+import type { Dictionary } from '@/types/dictionary';
 
-export default function ServicesContent({ lang, dict }: { lang: string; dict: any }) {
+export default function ServicesContent({ lang, dict }: { lang: string; dict: Dictionary }) {
   const fadeUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+    hidden: { opacity: 0, y: 36 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.72 } },
   };
 
   const shipServices = [
-    { icon: <Wrench className="w-8 h-8" strokeWidth={1.5} />, title: dict.services.ship.repair, desc: dict.services.ship.repairDesc },
-    { icon: <Settings className="w-8 h-8" strokeWidth={1.5} />, title: dict.services.ship.management, desc: dict.services.ship.managementDesc },
-    { icon: <Database className="w-8 h-8" strokeWidth={1.5} />, title: dict.services.ship.supply, desc: dict.services.ship.supplyDesc },
-    { icon: <Activity className="w-8 h-8" strokeWidth={1.5} />, title: dict.services.ship.pms, desc: dict.services.ship.pmsDesc },
+    { icon: Wrench, title: dict.services.ship.repair, desc: dict.services.ship.repairDesc },
+    { icon: Settings, title: dict.services.ship.management, desc: dict.services.ship.managementDesc },
+    { icon: Database, title: dict.services.ship.supply, desc: dict.services.ship.supplyDesc },
+    { icon: Activity, title: dict.services.ship.pms, desc: dict.services.ship.pmsDesc },
   ];
 
   const portServices = [
-    { icon: <Shield className="w-8 h-8" strokeWidth={1.5} />, title: dict.services.port.security, desc: dict.services.port.securityDesc },
-    { icon: <Cpu className="w-8 h-8" strokeWidth={1.5} />, title: dict.services.port.ccs, desc: dict.services.port.ccsDesc },
-    { icon: <Server className="w-8 h-8" strokeWidth={1.5} />, title: dict.services.port.integration, desc: dict.services.port.integrationDesc },
-    { icon: <Laptop className="w-8 h-8" strokeWidth={1.5} />, title: dict.services.port.customization, desc: dict.services.port.customizationDesc },
+    { icon: Shield, title: dict.services.port.security, desc: dict.services.port.securityDesc },
+    { icon: Cpu, title: dict.services.port.ccs, desc: dict.services.port.ccsDesc },
+    { icon: Server, title: dict.services.port.integration, desc: dict.services.port.integrationDesc },
+    { icon: Laptop, title: dict.services.port.customization, desc: dict.services.port.customizationDesc },
   ];
 
+  const transactionServices = [
+    { icon: FileSearch, title: dict.services.secondhand.survey, desc: dict.services.secondhand.surveyDesc },
+    { icon: Handshake, title: dict.services.secondhand.consulting, desc: dict.services.secondhand.consultingDesc },
+    { icon: ChartCandlestick, title: dict.services.secondhand.risk, desc: dict.services.secondhand.riskDesc },
+  ];
+
+  const sections = [
+    {
+      id: 'ship',
+      index: '01',
+      eyebrow: lang === 'zh' ? '船舶全生命周期运营保障' : 'Vessel Lifecycle Assurance',
+      title: dict.services.ship.title,
+      desc:
+        lang === 'zh'
+          ? '以机务经验和供应链协同为核心，覆盖维修、管理、备件与证书预警，让船舶运行保持稳定、合规、可控。'
+          : 'Centered on technical management and supply-chain coordination, covering repair, management, spares, and certificate alerts for stable and compliant vessel operations.',
+      image: '/yanghui/images/ship-operations-premium.png',
+      icon: Ship,
+      accent: 'cyan',
+      services: shipServices,
+    },
+    {
+      id: 'port',
+      index: '02',
+      eyebrow: lang === 'zh' ? '港口信息化与工业控制安全' : 'Port IT & Industrial Security',
+      title: dict.services.port.title,
+      desc:
+        lang === 'zh'
+          ? '围绕港口网络、工控系统、智能监控与船岸数据链路，构建面向运营现场的数字化安全能力。'
+          : 'Building field-oriented digital security capabilities around port networks, industrial control systems, intelligent monitoring, and ship-shore data links.',
+      image: '/yanghui/images/port-command-center.png',
+      icon: Network,
+      accent: 'blue',
+      services: portServices,
+    },
+    {
+      id: 'secondhand',
+      index: '03',
+      eyebrow: lang === 'zh' ? '航运资产交易勘验与风控' : 'Maritime Asset Transaction Risk Control',
+      title: dict.services.secondhand.title,
+      desc: dict.services.secondhand.overview,
+      image: '/yanghui/images/secondhand-trading.png',
+      icon: Scale,
+      accent: 'amber',
+      services: transactionServices,
+    },
+  ];
+
+  const accentClasses: Record<string, { text: string; bg: string; border: string; soft: string }> = {
+    cyan: { text: 'text-cyan-300', bg: 'bg-cyan-300', border: 'border-cyan-300/60', soft: 'bg-cyan-300/10' },
+    blue: { text: 'text-blue-300', bg: 'bg-blue-400', border: 'border-blue-300/60', soft: 'bg-blue-400/10' },
+    amber: { text: 'text-amber-300', bg: 'bg-amber-400', border: 'border-amber-300/60', soft: 'bg-amber-400/10' },
+  };
+
   return (
-    <div className="pt-20 bg-slate-900 min-h-screen">
-      {/* Hero Header */}
-      <div className="relative h-[50vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-black mb-0">
-        <motion.div 
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0 z-0"
-        >
-          <Image src="/yanghui/images/repair.jpg" alt="Services Hero" fill className="object-cover opacity-50 grayscale-[50%]" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-[url('/yanghui/images/grid.svg')] opacity-[0.05]"></div>
-        </motion.div>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+    <div className="min-h-screen bg-slate-950 text-white">
+      <section className="relative flex min-h-[640px] items-center overflow-hidden pt-20">
+        <Image src="/yanghui/images/secondhand-trading.png" alt={dict.navigation.services} fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.94),rgba(2,6,23,0.68)_48%,rgba(2,6,23,0.28))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(34,211,238,0.12)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:64px_64px]" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative z-10 text-center px-4 max-w-4xl mx-auto"
+          transition={{ duration: 0.75 }}
+          className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"
         >
-          <div className="inline-flex items-center px-4 py-2 border border-white/20 bg-white/5 backdrop-blur-md mb-8 uppercase tracking-widest text-sm text-white">
-            <span className="w-2 h-2 rounded-full bg-blue-500 mr-3 animate-pulse"></span>
-            {lang === 'zh' ? '全栈式解决方案' : 'Full-Stack Solutions'}
+          <div className="max-w-4xl">
+            <div className="mb-7 inline-flex items-center border border-white/15 bg-white/[0.08] px-4 py-2 text-sm font-semibold text-cyan-50 backdrop-blur">
+              <span className="mr-3 h-2 w-10 bg-amber-400" />
+              {lang === 'zh' ? '工程能力 · 数据能力 · 交易风控' : 'Engineering · Data · Transaction Risk'}
+            </div>
+            <h1 className="text-5xl font-black leading-tight md:text-7xl">{dict.navigation.services}</h1>
+            <p className="mt-7 max-w-3xl text-lg leading-9 text-slate-200">{dict.home.businessIntro}</p>
           </div>
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight uppercase">
-            {dict.navigation.services}
-          </h1>
         </motion.div>
-      </div>
+      </section>
 
-      <div className="relative bg-slate-900 pb-32">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32">
-          {/* Ship Operations Section - Dark Premium Card */}
-          <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
-            id="ship" className="mb-40 scroll-mt-32"
+      <section className="relative border-y border-white/10 bg-slate-950">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-3">
+          {sections.map((section) => {
+            const Icon = section.icon;
+            const accent = accentClasses[section.accent];
+            return (
+              <Link
+                key={section.id}
+                href={`#${section.id}`}
+                className="group flex items-center gap-4 border-b border-r border-white/10 px-6 py-7 transition-colors hover:bg-white/[0.04] md:border-b-0"
+              >
+                <span className={`flex h-12 w-12 items-center justify-center border ${accent.border} ${accent.soft}`}>
+                  <Icon className={`h-6 w-6 ${accent.text}`} />
+                </span>
+                <span>
+                  <span className="block text-xs font-black text-slate-500">{section.index}</span>
+                  <span className="mt-1 block text-base font-black text-white">{section.title}</span>
+                </span>
+                <ArrowRight className="ml-auto h-5 w-5 text-slate-500 transition-transform group-hover:translate-x-1 group-hover:text-white" />
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      <div className="bg-[#f6f8fb] py-24 text-slate-950 lg:py-32">
+        <div className="mx-auto max-w-7xl space-y-28 px-4 sm:px-6 lg:px-8">
+          {sections.map((section, sectionIndex) => {
+            const Icon = section.icon;
+            const accent = accentClasses[section.accent];
+            const reverse = sectionIndex % 2 === 1;
+            return (
+              <motion.section
+                key={section.id}
+                id={section.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-120px' }}
+                variants={fadeUp}
+                className="scroll-mt-28"
+              >
+                <div className={`grid gap-0 overflow-hidden border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)] lg:grid-cols-12`}>
+                  <div className={`relative min-h-[420px] lg:col-span-5 ${reverse ? 'lg:order-2' : ''}`}>
+                    <Image src={section.image} alt={section.title} fill className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                    <div className="absolute bottom-7 left-7 right-7">
+                      <div className={`mb-4 h-1 w-20 ${accent.bg}`} />
+                      <p className="text-sm font-black text-white/70">{section.eyebrow}</p>
+                      <p className="mt-2 text-4xl font-black text-white">{section.index}</p>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-7">
+                    <div className="border-b border-slate-200 p-8 md:p-10">
+                      <div className="mb-6 flex items-center gap-4">
+                        <span className={`flex h-14 w-14 items-center justify-center ${accent.bg} text-slate-950`}>
+                          <Icon className="h-7 w-7" />
+                        </span>
+                        <div>
+                          <p className="text-sm font-black text-slate-500">{section.eyebrow}</p>
+                          <h2 className="mt-2 text-3xl font-black leading-tight text-slate-950 md:text-4xl">{section.title}</h2>
+                        </div>
+                      </div>
+                      <p className="max-w-3xl text-base leading-8 text-slate-600">{section.desc}</p>
+                    </div>
+
+                    <div className={`grid gap-px bg-slate-200 ${section.id === 'secondhand' ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
+                      {section.services.map((service) => {
+                        const ServiceIcon = service.icon;
+                        return (
+                          <article key={service.title} className="group bg-white p-8 transition-colors hover:bg-slate-950">
+                            <ServiceIcon className={`mb-7 h-8 w-8 ${section.id === 'secondhand' ? 'text-amber-500' : 'text-cyan-600'} transition-colors group-hover:text-white`} />
+                            <h3 className="text-xl font-black text-slate-950 transition-colors group-hover:text-white">{service.title}</h3>
+                            <p className="mt-4 text-sm leading-7 text-slate-600 transition-colors group-hover:text-slate-300">{service.desc}</p>
+                          </article>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </motion.section>
+            );
+          })}
+
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-120px' }}
+            variants={fadeUp}
+            className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]"
           >
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-              <div>
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-1 bg-blue-500 mr-4"></div>
-                  <span className="text-blue-400 font-mono tracking-widest text-sm uppercase">01 / SECTOR</span>
-                </div>
-                <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight flex items-center">
-                  <Anchor className="w-10 h-10 mr-4 text-blue-500 opacity-50" />
-                  {dict.services.ship.title}
-                </h2>
+            <div className="bg-slate-950 p-8 text-white md:p-10">
+              <div className="mb-6 flex items-center gap-4">
+                <span className="flex h-12 w-12 items-center justify-center bg-amber-400 text-slate-950">
+                  <Radar className="h-6 w-6" />
+                </span>
+                <h2 className="text-3xl font-black">{dict.services.secondhand.processTitle}</h2>
               </div>
+              <p className="text-base leading-8 text-slate-300">
+                {lang === 'zh'
+                  ? '针对二手船交易的不确定性，我们把技术检查、商业条款和交付执行拆解为可验证节点，帮助客户形成清晰的交易判断。'
+                  : 'For the uncertainty of used vessel transactions, we break technical inspection, commercial terms, and delivery execution into verifiable milestones.'}
+              </p>
             </div>
-            
-            <div className="grid lg:grid-cols-12 gap-0 border border-white/10 shadow-2xl">
-              <div className="lg:col-span-5 relative h-[600px] overflow-hidden group">
-                <Image
-                  src="/yanghui/images/repair.jpg"
-                  alt={dict.services.ship.title}
-                  fill
-                  className="object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-80"></div>
-                <div className="absolute bottom-10 left-10 right-10">
-                  <div className="text-blue-400 font-mono mb-2">SYSTEM.SHIP_OPS</div>
-                  <div className="text-white text-xl font-light leading-relaxed">
-                    {lang === 'zh' ? '打造高效、安全、智能的现代化船舶运营生态' : 'Building an efficient, safe, and intelligent modern ship operation ecosystem'}
-                  </div>
-                </div>
-              </div>
-              
-              <div className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-white/10 backdrop-blur-sm">
-                {shipServices.map((service, index) => (
-                  <div key={index} className="bg-slate-900 p-10 hover:bg-slate-800 transition-colors group relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-blue-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                    <div className="w-16 h-16 bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                      {service.icon}
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-blue-400 transition-colors">{service.title}</h3>
-                    <p className="text-slate-400 text-base leading-relaxed font-light">{service.desc}</p>
-                    
-                    <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-300">
-                      <ArrowRight className="text-blue-500 w-6 h-6" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
 
-          {/* Port & IT Section - Tech Premium Card */}
-          <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
-            id="port" className="scroll-mt-32"
-          >
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-              <div>
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-1 bg-cyan-400 mr-4"></div>
-                  <span className="text-cyan-400 font-mono tracking-widest text-sm uppercase">02 / SECTOR</span>
+            <div className="grid gap-px bg-slate-200 md:grid-cols-4">
+              {(lang === 'zh'
+                ? ['需求与船型识别', '资料与证书核验', '现场技术勘验', '风险意见与交割建议']
+                : ['Requirement & Vessel Type', 'Document & Certificate Review', 'On-Site Technical Survey', 'Risk Opinion & Delivery Advice']
+              ).map((step, index) => (
+                <div key={step} className="bg-white p-7">
+                  <span className="text-4xl font-black text-slate-200">0{index + 1}</span>
+                  <p className="mt-8 text-base font-black leading-7 text-slate-950">{step}</p>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight flex items-center">
-                  <Network className="w-10 h-10 mr-4 text-cyan-400 opacity-50" />
-                  {dict.services.port.title}
-                </h2>
-              </div>
+              ))}
             </div>
-            
-            <div className="grid lg:grid-cols-12 gap-0 border border-white/10 shadow-2xl">
-              <div className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-white/10 backdrop-blur-sm order-2 lg:order-1">
-                {portServices.map((service, index) => (
-                  <div key={index} className="bg-slate-900 p-10 hover:bg-slate-800 transition-colors group relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-cyan-400 translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                    <div className="w-16 h-16 bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400 mb-8 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300">
-                      {service.icon}
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-cyan-400 transition-colors">{service.title}</h3>
-                    <p className="text-slate-400 text-base leading-relaxed font-light">{service.desc}</p>
-                    
-                    <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-300">
-                      <ArrowRight className="text-cyan-400 w-6 h-6" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="lg:col-span-5 relative h-[600px] overflow-hidden group order-1 lg:order-2">
-                <Image
-                  src="/yanghui/images/tech.jpg"
-                  alt={dict.services.port.title}
-                  fill
-                  className="object-cover grayscale-[40%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-80"></div>
-                <div className="absolute bottom-10 left-10 right-10">
-                  <div className="text-cyan-400 font-mono mb-2">SYSTEM.PORT_TECH</div>
-                  <div className="text-white text-xl font-light leading-relaxed">
-                    {lang === 'zh' ? '重塑港口数据流，构建无懈可击的工业控制安全网' : 'Reshaping port data flow and building an impeccable ICS security network'}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          </motion.section>
 
+          <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="border border-slate-200 bg-white p-8 md:p-10">
+            <div className="mb-8 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <div>
+                <h2 className="text-3xl font-black text-slate-950">{dict.services.secondhand.deliverablesTitle}</h2>
+                <p className="mt-3 max-w-2xl text-base leading-8 text-slate-600">
+                  {lang === 'zh'
+                    ? '每一项服务都围绕可落地的商业决策产出，避免只有口头判断。'
+                    : 'Each service is designed around usable decision outputs, not just verbal opinions.'}
+                </p>
+              </div>
+              <Link href={`/${lang}/contact`} className="inline-flex h-14 items-center bg-slate-950 px-7 text-base font-black text-white transition-colors hover:bg-cyan-700">
+                {dict.home.cta.button}
+                <ArrowRight className="ml-3 h-5 w-5" />
+              </Link>
+            </div>
+            <div className="grid gap-3 md:grid-cols-4">
+              {dict.services.secondhand.deliverables.map((item: string) => (
+                <div key={item} className="border border-slate-200 bg-[#f6f8fb] p-5">
+                  <BadgeCheck className="mb-5 h-6 w-6 text-amber-500" />
+                  <p className="text-sm font-black leading-6 text-slate-800">{item}</p>
+                </div>
+              ))}
+            </div>
+          </motion.section>
         </div>
       </div>
     </div>

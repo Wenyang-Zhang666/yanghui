@@ -1,124 +1,124 @@
 import { getDictionary } from '@/i18n';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, ArrowRight, TrendingUp } from 'lucide-react';
+import { ArrowRight, Calendar, Newspaper, TrendingUp } from 'lucide-react';
 
 export default async function News({ params }: { params: Promise<{ lang: string }> }) {
   const lang = (await params).lang as 'zh' | 'en';
   const dict = await getDictionary(lang);
 
-  const mockNews = [
+  const newsItems = [
     {
-      id: 1,
-      title: lang === 'zh' ? '成功案例：长兴2号趸船码头升级改造装修项目' : 'Success Case: Changxing No.2 Pontoon Wharf Upgrade & Renovation Project',
+      label: lang === 'zh' ? '特色案例' : 'Featured Case',
+      title:
+        lang === 'zh'
+          ? '成功案例：长兴2号趸船码头升级改造装修项目'
+          : 'Success Case: Changxing No.2 Pontoon Wharf Upgrade & Renovation Project',
       date: '2023-08-16',
-      summary: lang === 'zh' 
-        ? '本项目为上海农业农村委员会执法总队长兴2号趸船码头内装升级改造工程。改造内容涵盖11名船员换班临时居所、厨房、冷库、办公及多媒体会议室，全面满足中国船舶检验局(ZC)船检规范标准及各项海事环保规定，为船员提供高标准的舒适安全环境。' 
-        : 'This project is the interior upgrade and renovation of Changxing No.2 Pontoon Wharf for the Shanghai Agricultural and Rural Commission Law Enforcement Corps. The scope covers temporary quarters for 11 crew members, kitchens, cold storage, offices, and multimedia conference rooms, fully meeting ZC standards and maritime environmental regulations.',
-      image: '/yanghui/images/repair.jpg'
+      summary:
+        lang === 'zh'
+          ? '项目涵盖船员临时居所、厨房、冷库、办公及多媒体会议室等空间升级，围绕船检规范、海事环保要求和现场交付质量进行系统化管理。'
+          : 'The project covered crew accommodation, kitchen, cold storage, office, and multimedia meeting spaces, with systematic management around survey standards, maritime environmental requirements, and delivery quality.',
+      image: '/yanghui/images/ship-operations-premium.png',
     },
     {
-      id: 2,
-      title: lang === 'zh' ? '我司成功中标某大型港口网络安全加固项目' : 'Company Successfully Won the Bid for a Major Port Cybersecurity Hardening Project',
+      label: lang === 'zh' ? '能力更新' : 'Capability Update',
+      title:
+        lang === 'zh'
+          ? '新增二手船交易技术勘验与资产风险研判服务'
+          : 'New Used Vessel Technical Survey and Asset Risk Judgement Services',
+      date: '2026-06-28',
+      summary:
+        lang === 'zh'
+          ? '围绕二手船买卖场景，阳惠洋新增专项技术勘验评估、交易全程业务咨询和航运资产交易风险研判服务，帮助客户在谈判、定价和交割前形成专业依据。'
+          : 'For used vessel sale and purchase scenarios, Yanghuiyang now provides dedicated technical assessment, full-cycle transaction advisory, and maritime asset risk judgement to support negotiation, pricing, and delivery decisions.',
+      image: '/yanghui/images/secondhand-trading.png',
+    },
+    {
+      label: lang === 'zh' ? '技术动态' : 'Technology',
+      title:
+        lang === 'zh'
+          ? '港口工控网络安全加固与智能监控项目持续推进'
+          : 'Port ICS Cybersecurity Hardening and Intelligent Monitoring Projects Continue',
       date: '2026-05-12',
-      summary: lang === 'zh' ? '近日，上海阳惠洋科技有限公司凭借过硬的技术实力和丰富的行业经验，成功中标某国内大型港口集团的工业控制系统网络安全加固项目。' : 'Recently, Shanghai Yanghuiyang Technology successfully won the bid for the ICS cybersecurity hardening project of a major domestic port group.',
-      image: '/yanghui/images/tech.jpg'
+      summary:
+        lang === 'zh'
+          ? '公司持续推进港口工业控制系统安全加固、智能监控与船岸数据集成能力建设，为关键港航基础设施提供更稳健的数字化支撑。'
+          : 'The company continues to advance industrial control security hardening, intelligent monitoring, and ship-shore data integration capabilities for critical maritime infrastructure.',
+      image: '/yanghui/images/port-command-center.png',
     },
-    {
-      id: 3,
-      title: lang === 'zh' ? 'CCS规范智能监控管理软件V2.0正式发布' : 'CCS Compliant Intelligent Monitoring Management Software V2.0 Officially Released',
-      date: '2026-04-20',
-      summary: lang === 'zh' ? '经过研发团队的不懈努力，我司自主研发的智能监控管理软件迎来重大更新，V2.0版本在数据处理能力和预警准确率上均有显著提升。' : 'After unremitting efforts by the R&D team, our self-developed intelligent monitoring management software has received a major update.',
-      image: '/yanghui/images/ship.jpg'
-    }
   ];
 
   return (
-    <div className="pt-20 bg-slate-50 min-h-screen">
-      {/* Hero Header */}
-      <div className="relative h-[40vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-slate-900 mb-20">
-        <div className="absolute inset-0 z-0">
-          <Image src="/yanghui/images/ship.jpg" alt="News Hero" fill className="object-cover opacity-40 grayscale" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-[url('/yanghui/images/grid.svg')] opacity-[0.05]"></div>
-        </div>
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">{dict.navigation.news}</h1>
-          <div className="w-24 h-1.5 bg-blue-500 mx-auto rounded-full"></div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-[#f6f8fb] pt-20">
+      <section className="relative flex min-h-[520px] items-center overflow-hidden bg-slate-950">
+        <Image src="/yanghui/images/ship-operations-premium.png" alt={dict.navigation.news} fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.92),rgba(2,6,23,0.62)_50%,rgba(2,6,23,0.18))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(34,211,238,0.11)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
-        
-        {/* Featured Case Study - Large Card */}
-        <div className="mb-20">
-          <div className="flex items-center mb-8">
-            <TrendingUp className="w-6 h-6 mr-3 text-blue-600" />
-            <h2 className="text-2xl font-black text-slate-900 tracking-tight">{lang === 'zh' ? '特色案例' : 'Featured Case Study'}</h2>
-          </div>
-          
-          <Link href={`/${lang}/news/1`} className="group block bg-white border border-gray-200 overflow-hidden hover:border-blue-500 transition-colors">
-            <div className="grid md:grid-cols-2">
-              <div className="relative h-64 md:h-auto min-h-[300px]">
-                <Image src={mockNews[0].image} alt={mockNews[0].title} fill className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500" />
-                <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">CASE STUDY</div>
-              </div>
-              <div className="p-10 flex flex-col justify-center">
-                <div className="flex items-center text-sm text-gray-500 mb-4 font-mono">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  {mockNews[0].date}
-                </div>
-                <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-6 tracking-tight group-hover:text-blue-600 transition-colors">
-                  {mockNews[0].title}
-                </h3>
-                <p className="text-slate-600 leading-relaxed mb-8 font-light line-clamp-3">
-                  {mockNews[0].summary}
-                </p>
-                <div className="inline-flex items-center text-slate-900 font-bold uppercase tracking-widest text-sm mt-auto">
-                  {dict.home.learnMore} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                </div>
-              </div>
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl">
+            <div className="mb-7 inline-flex items-center border border-white/15 bg-white/[0.08] px-4 py-2 text-sm font-semibold text-cyan-50 backdrop-blur">
+              <span className="mr-3 h-2 w-10 bg-amber-400" />
+              {lang === 'zh' ? '项目案例 · 技术动态 · 服务更新' : 'Cases · Technology · Service Updates'}
             </div>
+            <h1 className="text-5xl font-black leading-tight text-white md:text-7xl">{dict.navigation.news}</h1>
+            <p className="mt-7 max-w-3xl text-lg leading-9 text-slate-200">
+              {lang === 'zh'
+                ? '记录公司在船舶运营、港口信息化和航运资产服务领域的项目实践与能力升级。'
+                : 'Project practices and capability updates across ship operations, port IT, and maritime asset services.'}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <div className="mb-5 flex items-center gap-4">
+              <TrendingUp className="h-7 w-7 text-cyan-700" />
+              <span className="text-sm font-black text-cyan-700">{lang === 'zh' ? '企业动态' : 'Company Updates'}</span>
+            </div>
+            <h2 className="text-4xl font-black leading-tight text-slate-950">
+              {lang === 'zh' ? '项目实践与服务能力' : 'Project Practice & Service Capability'}
+            </h2>
+          </div>
+          <Link href={`/${lang}/contact`} className="inline-flex h-14 items-center bg-slate-950 px-7 text-base font-black text-white transition-colors hover:bg-cyan-700">
+            {dict.home.cta.button}
+            <ArrowRight className="ml-3 h-5 w-5" />
           </Link>
         </div>
 
-        {/* Regular News Grid */}
-        <div>
-          <div className="flex items-center mb-8">
-            <h2 className="text-2xl font-black text-slate-900 tracking-tight">{lang === 'zh' ? '最新动态' : 'Latest Updates'}</h2>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mockNews.slice(1).map((news) => (
-              <Link key={news.id} href={`/${lang}/news/${news.id}`} className="group flex flex-col bg-white border border-gray-200 hover:border-blue-500 transition-colors h-full">
-                <div className="relative h-64 w-full overflow-hidden">
-                  <Image
-                    src={news.image}
-                    alt={news.title}
-                    fill
-                    className="object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                  />
+        <div className="grid gap-6 lg:grid-cols-3">
+          {newsItems.map((item, index) => (
+            <article key={item.title} className={`overflow-hidden border border-slate-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.07)] ${index === 0 ? 'lg:col-span-2' : ''}`}>
+              <div className={`relative ${index === 0 ? 'h-96' : 'h-72'}`}>
+                <Image src={item.image} alt={item.title} fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/74 via-transparent to-transparent" />
+                <div className="absolute left-5 top-5 bg-slate-950 px-4 py-2 text-xs font-black text-cyan-100">{item.label}</div>
+              </div>
+              <div className="p-8">
+                <div className="mb-5 flex items-center gap-2 text-sm font-semibold text-slate-500">
+                  <Calendar className="h-4 w-4" />
+                  {item.date}
                 </div>
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex items-center text-sm text-gray-500 mb-4 font-mono">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    {news.date}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-                    {news.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6 font-light line-clamp-3 flex-grow">
-                    {news.summary}
-                  </p>
-                  <div className="inline-flex items-center text-slate-900 font-bold uppercase tracking-widest text-xs mt-auto">
-                    {dict.home.learnMore} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+                <h3 className="text-2xl font-black leading-tight text-slate-950">{item.title}</h3>
+                <p className="mt-5 text-base leading-8 text-slate-600">{item.summary}</p>
+              </div>
+            </article>
+          ))}
         </div>
 
+        <div className="mt-10 border border-slate-200 bg-white p-7">
+          <div className="flex items-start gap-4">
+            <Newspaper className="mt-1 h-7 w-7 shrink-0 text-amber-500" />
+            <p className="text-base leading-8 text-slate-600">
+              {lang === 'zh'
+                ? '更多项目动态将结合客户授权、交付进展和合规要求持续更新。涉及交易、勘验和风控的具体案例将以脱敏方式呈现。'
+                : 'More updates will be published according to client authorization, delivery progress, and compliance requirements. Transaction, survey, and risk cases will be presented in anonymized form.'}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

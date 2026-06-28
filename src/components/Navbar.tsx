@@ -2,26 +2,24 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Globe, Menu, MessageSquare, X } from 'lucide-react';
+import BrandLogo from './BrandLogo';
+import type { Dictionary } from '@/types/dictionary';
 
-export default function Navbar({ lang, dict }: { lang: string; dict: any }) {
+export default function Navbar({ lang, dict }: { lang: string; dict: Dictionary }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-
   const isHome = pathname === `/${lang}`;
+  const isFloating = isHome && !scrolled;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 48);
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
 
   const switchLanguage = () => {
     const newLang = lang === 'zh' ? 'en' : 'zh';
@@ -33,86 +31,110 @@ export default function Navbar({ lang, dict }: { lang: string; dict: any }) {
     { href: `/${lang}`, label: dict.navigation.home },
     { href: `/${lang}/about`, label: dict.navigation.about },
     { href: `/${lang}/services`, label: dict.navigation.services },
+    { href: `/${lang}/services#secondhand`, label: dict.navigation.secondhand },
     { href: `/${lang}/news`, label: dict.navigation.news },
     { href: `/${lang}/contact`, label: dict.navigation.contact },
   ];
 
-  const navClass = isHome
-    ? scrolled
-      ? 'bg-white/90 backdrop-blur-lg shadow-lg text-gray-800'
-      : 'bg-transparent text-white'
-    : 'bg-white shadow-md text-gray-800';
+  const navShell = isFloating
+    ? 'border-white/10 bg-slate-950/15 text-white'
+    : 'border-slate-200/80 bg-white/95 text-slate-950 shadow-[0_14px_45px_rgba(15,23,42,0.08)]';
 
-  const linkClass = isHome && !scrolled
-    ? 'text-gray-100 hover:text-white hover:bg-white/10'
-    : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50/50';
+  const navText = isFloating
+    ? 'text-cyan-50 hover:border-cyan-300/60 hover:bg-white/10'
+    : 'text-slate-600 hover:border-cyan-500/60 hover:bg-cyan-50 hover:text-slate-950';
+
+  const activeText = isFloating
+    ? 'border-cyan-300/70 bg-white/10 text-white'
+    : 'border-cyan-500/70 bg-cyan-50 text-slate-950';
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${navClass}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
-          <div className="flex items-center">
-            <Link href={`/${lang}`} className="flex-shrink-0 flex items-center gap-3 group">
-              <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${isHome && !scrolled ? 'bg-white/20 backdrop-blur-sm' : 'bg-blue-600'}`}>
-                <span className={`font-bold text-xl ${isHome && !scrolled ? 'text-white' : 'text-white'}`}>YH</span>
-              </div>
-              <span className="font-bold text-xl hidden sm:block tracking-wide">阳惠洋科技</span>
-            </Link>
-          </div>
-          
-          <div className="hidden md:flex items-center space-x-2">
-            {navLinks.map((link) => (
+    <nav className={`fixed top-0 z-50 w-full border-b backdrop-blur-xl transition-all duration-300 ${navShell}`}>
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href={`/${lang}`} className="flex min-w-0 items-center" onClick={() => setIsOpen(false)}>
+          <BrandLogo lang={lang} inverted={isFloating} />
+        </Link>
+
+        <div className="hidden items-center gap-1 lg:flex">
+          {navLinks.map((link) => {
+            const cleanPath = link.href.split('#')[0];
+            const active = !link.href.includes('#') && pathname === cleanPath;
+            return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${linkClass}`}
+                className={`border px-3 py-2 text-sm font-semibold transition-colors ${
+                  active ? activeText : `border-transparent ${navText}`
+                }`}
               >
                 {link.label}
               </Link>
-            ))}
-            <div className={`w-px h-6 mx-2 ${isHome && !scrolled ? 'bg-white/30' : 'bg-gray-200'}`}></div>
-            <Link
-              href={switchLanguage()}
-              className={`flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all ${linkClass}`}
-            >
-              <Globe className="w-4 h-4 mr-1.5" />
-              {lang === 'zh' ? 'EN' : '中文'}
-            </Link>
-          </div>
-
-          <div className="flex items-center md:hidden">
-            <button
-              onClick={toggleMenu}
-              className={`inline-flex items-center justify-center p-2 rounded-md focus:outline-none ${isHome && !scrolled ? 'text-white hover:bg-white/20' : 'text-gray-600 hover:bg-gray-100'}`}
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+            );
+          })}
         </div>
+
+        <div className="hidden items-center gap-3 lg:flex">
+          <Link
+            href={switchLanguage()}
+            className={`inline-flex h-10 items-center border px-3 text-sm font-semibold transition-colors ${
+              isFloating ? 'border-white/15 text-white hover:bg-white/10' : 'border-slate-200 text-slate-700 hover:border-cyan-500 hover:text-slate-950'
+            }`}
+          >
+            <Globe className="mr-2 h-4 w-4" />
+            {lang === 'zh' ? 'EN' : '中文'}
+          </Link>
+          <Link
+            href={`/${lang}/contact`}
+            className="inline-flex h-10 items-center bg-amber-400 px-4 text-sm font-black text-slate-950 transition-colors hover:bg-amber-300"
+          >
+            <MessageSquare className="mr-2 h-4 w-4" />
+            {lang === 'zh' ? '业务咨询' : 'Inquiry'}
+          </Link>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setIsOpen((value) => !value)}
+          className={`inline-flex h-11 w-11 items-center justify-center border transition-colors lg:hidden ${
+            isFloating ? 'border-white/20 text-white hover:bg-white/10' : 'border-slate-200 text-slate-700 hover:bg-slate-100'
+          }`}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+        >
+          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden absolute w-full bg-white border-t border-gray-100 shadow-xl">
-          <div className="px-4 pt-2 pb-6 space-y-1">
+        <div className="border-t border-slate-200 bg-white px-4 pb-5 pt-3 shadow-2xl lg:hidden">
+          <div className="mx-auto grid max-w-7xl gap-2">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-3 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                className="border border-slate-200 px-4 py-3 text-base font-semibold text-slate-800 transition-colors hover:border-cyan-500 hover:bg-cyan-50"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="h-px bg-gray-100 my-2"></div>
-            <Link
-              href={switchLanguage()}
-              className="flex items-center px-3 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50"
-            >
-              <Globe className="w-5 h-5 mr-2" />
-              {lang === 'zh' ? 'English' : '中文'}
-            </Link>
+            <div className="mt-2 grid grid-cols-2 gap-2">
+              <Link
+                href={switchLanguage()}
+                className="inline-flex items-center justify-center border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700"
+                onClick={() => setIsOpen(false)}
+              >
+                <Globe className="mr-2 h-4 w-4" />
+                {lang === 'zh' ? 'English' : '中文'}
+              </Link>
+              <Link
+                href={`/${lang}/contact`}
+                className="inline-flex items-center justify-center bg-slate-950 px-4 py-3 text-sm font-black text-white"
+                onClick={() => setIsOpen(false)}
+              >
+                <MessageSquare className="mr-2 h-4 w-4" />
+                {lang === 'zh' ? '咨询' : 'Inquiry'}
+              </Link>
+            </div>
           </div>
         </div>
       )}

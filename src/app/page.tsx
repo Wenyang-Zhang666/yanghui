@@ -13,7 +13,7 @@ export default function RootPage() {
         <title>上海阳惠洋科技有限公司 | YHY TECH</title>
       </head>
       <body>
-        <p>Redirecting to <a href="/yanghui/zh">/yanghui/zh</a>...</p>
+        <p>Redirecting to /yanghui/zh...</p>
         <script
           dangerouslySetInnerHTML={{
             __html: `window.location.href = '/yanghui/zh';`,

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Yanghuiyang Tech logo">
+  <defs>
+    <linearGradient id="yhy-logo-glow" x1="32" x2="224" y1="32" y2="224" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22d3ee"/>
+      <stop offset="0.55" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" fill="#08111f"/>
+  <path d="M128 20 216 64v68c0 54.8-35.6 89.2-88 104-52.4-14.8-88-49.2-88-104V64l88-44Z" fill="#08111f"/>
+  <path d="M128 34.8 202 72v57.2c0 44.8-28.4 74-74 88-45.6-14-74-43.2-74-88V72l74-37.2Z" fill="url(#yhy-logo-glow)" opacity="0.28"/>
+  <path d="M80 82 128 180l48-98" fill="none" stroke="url(#yhy-logo-glow)" stroke-width="20.8" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path d="M72 154c20.8-15.2 42.8-15.2 66.8 0 17.6 11.2 32 11.2 45.2.8" fill="none" stroke="#e0f2fe" stroke-width="10.4" stroke-linecap="square"/>
+  <path d="M128 68v112" fill="none" stroke="#f8fafc" stroke-width="8.8" stroke-linecap="square" opacity="0.9"/>
+  <path d="M68 68h32M156 68h32M68 192h28M160 192h28" stroke="#fbbf24" stroke-width="8" stroke-linecap="square" opacity="0.9"/>
+</svg>

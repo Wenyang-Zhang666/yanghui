@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { Send } from 'lucide-react';
+import type { Dictionary } from '@/types/dictionary';
 
-export default function ContactForm({ dict }: { dict: any }) {
+export default function ContactForm({ dict }: { dict: Dictionary }) {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -22,7 +23,7 @@ export default function ContactForm({ dict }: { dict: any }) {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nCompany: ${formData.company}\nPhone: ${formData.phone}\n\nRequirement:\n${formData.requirement}`
     );
-    window.location.href = `mailto:contact@yhytech.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${dict.footer.email}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -39,7 +40,7 @@ export default function ContactForm({ dict }: { dict: any }) {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-shadow"
+            className="w-full border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition-colors focus:border-cyan-600"
           />
         </div>
         <div>
@@ -52,7 +53,7 @@ export default function ContactForm({ dict }: { dict: any }) {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-shadow"
+            className="w-full border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition-colors focus:border-cyan-600"
           />
         </div>
       </div>
@@ -68,7 +69,7 @@ export default function ContactForm({ dict }: { dict: any }) {
           required
           value={formData.phone}
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-shadow"
+          className="w-full border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition-colors focus:border-cyan-600"
         />
       </div>
 
@@ -83,13 +84,13 @@ export default function ContactForm({ dict }: { dict: any }) {
           required
           value={formData.requirement}
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-shadow resize-none"
+          className="w-full resize-none border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition-colors focus:border-cyan-600"
         ></textarea>
       </div>
 
       <button
         type="submit"
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center"
+        className="flex w-full items-center justify-center bg-slate-950 px-6 py-4 font-black text-white transition-colors hover:bg-cyan-700"
       >
         <Send className="w-5 h-5 mr-2" />
         {dict.contact.form.submit}

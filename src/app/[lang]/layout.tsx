@@ -13,7 +13,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: 'zh
   return {
     title: dict.seo.title,
     description: dict.seo.description,
-    keywords: '港口网络安全, 船舶运营服务, 船舶备件采购, 船岸数据集成, 上海阳惠洋科技',
+    keywords: '港口网络安全, 船舶运营服务, 二手船交易评估, 船舶资产风控, 船岸数据集成, 上海阳惠洋科技',
+    icons: {
+      icon: '/yanghui/logo.svg',
+    },
   };
 }
 
@@ -36,7 +39,7 @@ export default async function RootLayout({
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <Navbar lang={lang} dict={dict} />
         <main className="flex-grow">{children}</main>
-        <Footer dict={dict} />
+        <Footer lang={lang} dict={dict} />
       </body>
     </html>
   );

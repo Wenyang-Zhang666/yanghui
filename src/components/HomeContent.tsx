@@ -1,285 +1,364 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import CountUp from 'react-countup';
-import { ArrowRight, ShieldCheck, Ship, Globe, Users, Anchor, Zap, Server } from 'lucide-react';
+import {
+  Anchor,
+  ArrowRight,
+  BadgeCheck,
+  ChartCandlestick,
+  ClipboardCheck,
+  FileSearch,
+  Globe,
+  Handshake,
+  Network,
+  Radar,
+  Scale,
+  ShieldCheck,
+  Ship,
+  Users,
+} from 'lucide-react';
 import HeroCarousel from './HeroCarousel';
-import { useRef } from 'react';
+import type { Dictionary } from '@/types/dictionary';
 
-export default function HomeContent({ lang, dict }: { lang: string; dict: any }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
-  // Motion variants
+export default function HomeContent({ lang, dict }: { lang: string; dict: Dictionary }) {
   const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+    hidden: { opacity: 0, y: 32 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.72 } },
   };
 
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
+      transition: { staggerChildren: 0.12 },
+    },
   };
 
+  const businessCards = [
+    {
+      href: `/${lang}/services#ship`,
+      image: '/yanghui/images/ship-operations-premium.png',
+      icon: Anchor,
+      title: dict.home.shipOperations,
+      desc: dict.home.shipOperationsDesc,
+      accent: 'text-cyan-600',
+      bar: 'bg-cyan-400',
+      points:
+        lang === 'zh'
+          ? ['航修坞修配合', '机务管理外包', '备件物料供应']
+          : ['Voyage & Dry-Dock Repair', 'Technical Management', 'Spares & Stores'],
+    },
+    {
+      href: `/${lang}/services#port`,
+      image: '/yanghui/images/port-command-center.png',
+      icon: Network,
+      title: dict.home.portTechnology,
+      desc: dict.home.portTechnologyDesc,
+      accent: 'text-blue-600',
+      bar: 'bg-blue-500',
+      points:
+        lang === 'zh'
+          ? ['工控网络加固', 'CCS智能监控', '船岸数据集成']
+          : ['ICS Hardening', 'CCS Monitoring', 'Ship-Shore Data'],
+    },
+    {
+      href: `/${lang}/services#secondhand`,
+      image: '/yanghui/images/secondhand-trading.png',
+      icon: FileSearch,
+      title: dict.home.secondhandTrading,
+      desc: dict.home.secondhandTradingDesc,
+      accent: 'text-amber-600',
+      bar: 'bg-amber-400',
+      points:
+        lang === 'zh'
+          ? ['专项技术勘验', '交易全程咨询', '资产风险研判']
+          : ['Technical Survey', 'Full-Cycle Advisory', 'Asset Risk Review'],
+    },
+  ];
+
+  const advantages = [
+    { icon: ShieldCheck, title: dict.home.adv1Title, desc: dict.home.adv1Desc },
+    { icon: Globe, title: dict.home.adv2Title, desc: dict.home.adv2Desc },
+    { icon: Ship, title: dict.home.adv3Title, desc: dict.home.adv3Desc },
+    { icon: Users, title: dict.home.adv4Title, desc: dict.home.adv4Desc },
+  ];
+
+  const process = [
+    {
+      icon: FileSearch,
+      title: dict.services.secondhand.survey,
+      desc: dict.services.secondhand.surveyDesc,
+    },
+    {
+      icon: Handshake,
+      title: dict.services.secondhand.consulting,
+      desc: dict.services.secondhand.consultingDesc,
+    },
+    {
+      icon: ChartCandlestick,
+      title: dict.services.secondhand.risk,
+      desc: dict.services.secondhand.riskDesc,
+    },
+  ];
+
   const partnerLogos = [
-    "中远海运", "招商局港口", "上港集团", "浙江省海港集团", "山东省港口集团", 
-    "广州港集团", "天津港集团", "福建省海港集团"
+    '中远海运',
+    '招商局港口',
+    '上港集团',
+    '浙江省海港集团',
+    '山东省港口集团',
+    '广州港集团',
+    '天津港集团',
+    '福建省海港集团',
   ];
 
   return (
-    <div className="flex flex-col w-full overflow-hidden bg-slate-50">
-      {/* 1. High-End Hero Section Carousel */}
+    <div className="w-full overflow-hidden bg-[#f6f8fb] text-slate-950">
       <HeroCarousel lang={lang} dict={dict} />
 
-      {/* 2. Premium About Summary - Industrial Style */}
-      <section className="py-32 relative bg-white border-b border-gray-200">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[url('/yanghui/images/grid.svg')] opacity-[0.03] pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-16 items-center">
-            <motion.div 
-              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
-              className="lg:col-span-5"
-            >
-              <div className="flex items-center mb-8">
-                <div className="w-12 h-1 bg-blue-600 mr-4"></div>
-                <h3 className="text-blue-600 font-bold uppercase tracking-[0.2em] text-sm">COMPANY OVERVIEW</h3>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-[1.2] tracking-tight">
-                {dict.home.aboutSummary.title}
-              </h2>
-              <p className="text-lg text-slate-600 leading-relaxed mb-10 font-light text-justify">
-                {dict.home.aboutSummary.desc}
+      <section className="relative bg-slate-950">
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(34,211,238,0.08)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:56px_56px]" />
+        <div className="relative mx-auto grid max-w-7xl grid-cols-2 border-x border-white/10 md:grid-cols-4">
+          {[
+            { label: dict.home.stats.years, num: dict.home.stats.yearsNum, suffix: '+' },
+            { label: dict.home.stats.clients, num: dict.home.stats.clientsNum, suffix: '+' },
+            { label: dict.home.stats.ports, num: dict.home.stats.portsNum, suffix: '+' },
+            { label: dict.home.stats.projects, num: dict.home.stats.projectsNum, suffix: '+' },
+          ].map((stat, index) => (
+            <div key={stat.label} className="border-b border-r border-white/10 px-5 py-8 md:border-b-0 lg:px-8">
+              <p className="text-4xl font-black text-white md:text-5xl">
+                <CountUp end={stat.num} duration={2.3} enableScrollSpy scrollSpyOnce />
+                <span className={index === 2 ? 'text-amber-300' : 'text-cyan-300'}>{stat.suffix}</span>
               </p>
-              <Link href={`/${lang}/about`} className="inline-flex items-center text-slate-900 font-bold hover:text-blue-600 transition-colors group uppercase tracking-wider text-sm">
-                {dict.home.learnMore}
-                <span className="w-12 h-12 border border-slate-200 rounded-full flex items-center justify-center ml-4 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                  <ArrowRight className="w-5 h-5" />
-                </span>
-              </Link>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}
-              className="lg:col-span-7 relative"
-            >
-              {/* Industrial decorative frame */}
-              <div className="absolute -inset-4 border-2 border-slate-100 hidden md:block">
-                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-blue-600 -translate-x-[2px] -translate-y-[2px]"></div>
-                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-blue-600 translate-x-[2px] -translate-y-[2px]"></div>
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-blue-600 -translate-x-[2px] translate-y-[2px]"></div>
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-blue-600 translate-x-[2px] translate-y-[2px]"></div>
-              </div>
-              <div className="relative h-[600px] w-full overflow-hidden bg-slate-100">
-                <Image src="/yanghui/images/tech.jpg" alt="About Us" fill className="object-cover grayscale-[20%] contrast-125" />
-                {/* Tech overlay effect */}
-                <div className="absolute inset-0 bg-blue-900/10 mix-blend-multiply"></div>
-              </div>
-              
-              {/* Floating tech badge */}
-              <div className="absolute -left-10 bottom-10 bg-white p-6 shadow-2xl border border-gray-100 hidden md:flex items-center gap-4">
-                <div className="w-14 h-14 bg-slate-900 flex items-center justify-center text-white">
-                  <Zap className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="text-sm text-gray-500 font-mono mb-1">SYSTEM STATUS</div>
-                  <div className="font-bold text-slate-900 tracking-wider">ONLINE & SECURE</div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Stats Counter Section - Industrial Dark */}
-      <section className="py-24 bg-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/yanghui/images/grid.svg')] opacity-[0.05]"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8">
-            {[
-              { label: dict.home.stats.years, num: dict.home.stats.yearsNum, suffix: '+' },
-              { label: dict.home.stats.clients, num: dict.home.stats.clientsNum, suffix: '+' },
-              { label: dict.home.stats.ports, num: dict.home.stats.portsNum, suffix: '+' },
-              { label: dict.home.stats.projects, num: dict.home.stats.projectsNum, suffix: '+' },
-            ].map((stat, i) => (
-              <motion.div 
-                key={i} 
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} viewport={{ once: true }}
-                className="relative text-center group"
-              >
-                {/* Industrial Line Separator */}
-                {i !== 0 && <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-px h-16 bg-white/10"></div>}
-                
-                <div className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tighter tabular-nums">
-                  <CountUp end={stat.num} duration={2.5} enableScrollSpy scrollSpyOnce />
-                  <span className="text-blue-500 ml-1">{stat.suffix}</span>
-                </div>
-                <div className="text-gray-400 font-medium tracking-[0.1em] uppercase text-sm">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Core Business Sectors - Tech Cards */}
-      <section className="py-32 bg-slate-50 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-            className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8"
-          >
-            <div className="max-w-2xl">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-1 bg-blue-600 mr-4"></div>
-                <h3 className="text-blue-600 font-bold uppercase tracking-[0.2em] text-sm">CORE BUSINESS</h3>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tight">{dict.home.businessSectors}</h2>
+              <p className="mt-3 text-sm font-semibold text-slate-400">{stat.label}</p>
             </div>
-            <p className="text-slate-500 max-w-md font-light">
-              {lang === 'zh' ? '我们提供全栈式的港航服务体系，融合物联网与数据智能，助力企业在复杂多变的市场中保持绝对领先。' : 'We provide a full-stack port and shipping service system, integrating IoT and data intelligence.'}
-            </p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Sector 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}
-              className="group bg-white border border-gray-200 overflow-hidden hover:border-blue-500 transition-colors duration-300 flex flex-col h-full"
-            >
-              <div className="relative h-[400px] w-full overflow-hidden">
-                <Image src="/yanghui/images/ship.jpg" alt={dict.home.shipOperations} fill className="object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" />
-                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur px-4 py-2 text-xs font-bold tracking-widest uppercase">01</div>
-              </div>
-              <div className="p-10 flex flex-col flex-grow relative bg-white">
-                <div className="absolute top-0 right-10 w-px h-full bg-gray-100"></div>
-                <div className="absolute top-0 right-20 w-px h-full bg-gray-100"></div>
-                
-                <div className="w-16 h-16 bg-slate-900 flex items-center justify-center mb-8 relative z-10">
-                  <Anchor className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-3xl font-black text-slate-900 mb-4 tracking-tight relative z-10">{dict.home.shipOperations}</h3>
-                <p className="text-slate-600 leading-relaxed mb-10 flex-grow font-light relative z-10">
-                  {dict.home.shipOperationsDesc}
-                </p>
-                <Link href={`/${lang}/services#ship`} className="inline-flex items-center text-slate-900 font-bold hover:text-blue-600 transition-colors uppercase tracking-widest text-sm relative z-10 mt-auto">
-                  {dict.home.learnMore} <ArrowRight className="ml-3 w-4 h-4" />
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* Sector 2 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} viewport={{ once: true }}
-              className="group bg-white border border-gray-200 overflow-hidden hover:border-blue-500 transition-colors duration-300 flex flex-col h-full"
-            >
-              <div className="relative h-[400px] w-full overflow-hidden">
-                <Image src="/yanghui/images/repair.jpg" alt={dict.home.portTechnology} fill className="object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" />
-                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur px-4 py-2 text-xs font-bold tracking-widest uppercase">02</div>
-              </div>
-              <div className="p-10 flex flex-col flex-grow relative bg-white">
-                <div className="absolute top-0 right-10 w-px h-full bg-gray-100"></div>
-                <div className="absolute top-0 right-20 w-px h-full bg-gray-100"></div>
-
-                <div className="w-16 h-16 bg-blue-600 flex items-center justify-center mb-8 relative z-10">
-                  <Server className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-3xl font-black text-slate-900 mb-4 tracking-tight relative z-10">{dict.home.portTechnology}</h3>
-                <p className="text-slate-600 leading-relaxed mb-10 flex-grow font-light relative z-10">
-                  {dict.home.portTechnologyDesc}
-                </p>
-                <Link href={`/${lang}/services#port`} className="inline-flex items-center text-slate-900 font-bold hover:text-blue-600 transition-colors uppercase tracking-widest text-sm relative z-10 mt-auto">
-                  {dict.home.learnMore} <ArrowRight className="ml-3 w-4 h-4" />
-                </Link>
-              </div>
-            </motion.div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* 5. Advantages - Minimalist Grid */}
-      <section className="py-24 bg-white border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6 tracking-tight">{dict.home.advantages}</h2>
-            <div className="w-16 h-1 bg-slate-900 mx-auto"></div>
+      <section className="relative bg-white py-24 lg:py-32">
+        <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, x: -36 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.75 }}
+            className="relative min-h-[520px] overflow-hidden border border-slate-200"
+          >
+            <Image src="/yanghui/images/port-command-center.png" alt={dict.home.aboutSummary.title} fill className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/18 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 grid grid-cols-3 border-t border-white/20 bg-slate-950/58 backdrop-blur">
+              {[
+                { icon: Radar, label: lang === 'zh' ? '响应' : 'Response' },
+                { icon: ClipboardCheck, label: lang === 'zh' ? '合规' : 'Compliance' },
+                { icon: Scale, label: lang === 'zh' ? '风控' : 'Risk' },
+              ].map((item) => (
+                <div key={item.label} className="border-r border-white/15 px-4 py-5 text-white last:border-r-0">
+                  <item.icon className="mb-3 h-6 w-6 text-cyan-200" />
+                  <span className="text-sm font-bold">{item.label}</span>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
-          <motion.div 
-            variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 border border-gray-200"
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={fadeUp}>
+            <div className="mb-6 flex items-center gap-4">
+              <span className="h-px w-14 bg-cyan-500" />
+              <span className="text-sm font-black text-cyan-700">COMPANY OVERVIEW</span>
+            </div>
+            <h2 className="max-w-2xl text-4xl font-black leading-tight text-slate-950 md:text-5xl">
+              {dict.home.aboutSummary.title}
+            </h2>
+            <p className="mt-7 max-w-2xl text-lg leading-9 text-slate-600">{dict.home.aboutSummary.desc}</p>
+
+            <div className="mt-9 grid gap-px bg-slate-200 sm:grid-cols-3">
+              {(lang === 'zh'
+                ? ['港航运营经验', '软件与数据能力', '交易风控视角']
+                : ['Maritime Operations', 'Software & Data', 'Transaction Risk']
+              ).map((item) => (
+                <div key={item} className="bg-[#f8fafc] p-5 text-sm font-bold text-slate-700">
+                  <BadgeCheck className="mb-3 h-5 w-5 text-amber-500" />
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <Link
+              href={`/${lang}/about`}
+              className="mt-10 inline-flex h-14 items-center bg-slate-950 px-7 text-base font-black text-white transition-colors hover:bg-cyan-700"
+            >
+              {dict.home.learnMore}
+              <ArrowRight className="ml-3 h-5 w-5" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-[#f6f8fb] py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-14 max-w-3xl">
+            <div className="mb-6 flex items-center gap-4">
+              <span className="h-px w-14 bg-amber-400" />
+              <span className="text-sm font-black text-amber-700">CORE BUSINESS</span>
+            </div>
+            <h2 className="text-4xl font-black leading-tight text-slate-950 md:text-5xl">{dict.home.businessSectors}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{dict.home.businessIntro}</p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            className="grid gap-6 lg:grid-cols-3"
           >
-            {[
-              { icon: ShieldCheck, title: dict.home.adv1Title, desc: dict.home.adv1Desc, num: "01" },
-              { icon: Globe, title: dict.home.adv2Title, desc: dict.home.adv2Desc, num: "02" },
-              { icon: Ship, title: dict.home.adv3Title, desc: dict.home.adv3Desc, num: "03" },
-              { icon: Users, title: dict.home.adv4Title, desc: dict.home.adv4Desc, num: "04" },
-            ].map((adv, idx) => (
-              <motion.div 
-                key={idx} variants={fadeUp}
-                className="relative p-10 bg-white group hover:bg-slate-50 transition-colors"
-              >
-                <div className="text-gray-200 font-mono text-4xl font-bold absolute top-6 right-6 group-hover:text-blue-100 transition-colors">{adv.num}</div>
-                <adv.icon className="w-10 h-10 text-blue-600 mb-8" strokeWidth={1.5} />
-                <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight">{adv.title}</h3>
-                <p className="text-slate-500 font-light leading-relaxed">{adv.desc}</p>
+            {businessCards.map((card, index) => (
+              <motion.article key={card.title} variants={fadeUp} className="group flex min-h-[620px] flex-col overflow-hidden border border-slate-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
+                <div className="relative h-72 overflow-hidden">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    className="object-cover grayscale-[20%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/72 to-transparent" />
+                  <div className="absolute bottom-5 left-5 flex items-center gap-3 text-white">
+                    <span className={`h-10 w-1 ${card.bar}`} />
+                    <span className="text-5xl font-black">0{index + 1}</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-1 flex-col p-7">
+                  <div className={`mb-6 flex h-14 w-14 items-center justify-center border border-slate-200 ${card.accent}`}>
+                    <card.icon className="h-7 w-7" />
+                  </div>
+                  <h3 className="text-2xl font-black leading-tight text-slate-950">{card.title}</h3>
+                  <p className="mt-4 flex-1 text-base leading-8 text-slate-600">{card.desc}</p>
+                  <div className="mt-6 grid gap-2">
+                    {card.points.map((point) => (
+                      <span key={point} className="flex items-center gap-3 border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-700">
+                        <span className={`h-2 w-2 ${card.bar}`} />
+                        {point}
+                      </span>
+                    ))}
+                  </div>
+                  <Link href={card.href} className="mt-7 inline-flex items-center font-black text-slate-950 transition-colors hover:text-cyan-700">
+                    {dict.home.learnMore}
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-slate-950 py-24 text-white lg:py-32">
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(245,158,11,0.1)_1px,transparent_1px),linear-gradient(0deg,rgba(34,211,238,0.08)_1px,transparent_1px)] bg-[size:72px_72px]" />
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={fadeUp}>
+            <div className="mb-6 flex items-center gap-4">
+              <span className="h-px w-14 bg-amber-300" />
+              <span className="text-sm font-black text-amber-200">USED VESSEL TRANSACTION</span>
+            </div>
+            <h2 className="text-4xl font-black leading-tight md:text-5xl">{dict.services.secondhand.title}</h2>
+            <p className="mt-7 text-lg leading-9 text-slate-300">{dict.services.secondhand.overview}</p>
+            <Link
+              href={`/${lang}/services#secondhand`}
+              className="mt-10 inline-flex h-14 items-center bg-amber-400 px-7 text-base font-black text-slate-950 transition-colors hover:bg-amber-300"
+            >
+              {dict.home.learnMore}
+              <ArrowRight className="ml-3 h-5 w-5" />
+            </Link>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            className="grid gap-px bg-white/10 md:grid-cols-3"
+          >
+            {process.map((item, index) => (
+              <motion.div key={item.title} variants={fadeUp} className="bg-slate-950/86 p-8">
+                <div className="mb-8 flex items-center justify-between">
+                  <item.icon className={index === 2 ? 'h-9 w-9 text-amber-300' : 'h-9 w-9 text-cyan-300'} />
+                  <span className="text-5xl font-black text-white/10">0{index + 1}</span>
+                </div>
+                <h3 className="text-xl font-black text-white">{item.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-slate-400">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* 6. Marquee Partners - Minimal */}
-      <section className="py-16 bg-white overflow-hidden flex flex-col items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center mb-10">
-          <p className="text-gray-400 font-mono text-sm uppercase tracking-widest">{dict.home.partners}</p>
+      <section className="bg-white py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-14 text-center">
+            <h2 className="text-4xl font-black leading-tight text-slate-950 md:text-5xl">{dict.home.advantages}</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600">{dict.home.advantagesIntro}</p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            className="grid gap-px bg-slate-200 border border-slate-200 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {advantages.map((adv, index) => (
+              <motion.div key={adv.title} variants={fadeUp} className="group bg-white p-8 transition-colors hover:bg-slate-950">
+                <div className="mb-8 flex items-center justify-between">
+                  <adv.icon className="h-10 w-10 text-cyan-600 transition-colors group-hover:text-cyan-300" strokeWidth={1.6} />
+                  <span className="text-4xl font-black text-slate-100 transition-colors group-hover:text-white/10">0{index + 1}</span>
+                </div>
+                <h3 className="text-xl font-black text-slate-950 transition-colors group-hover:text-white">{adv.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-slate-600 transition-colors group-hover:text-slate-300">{adv.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-        
-        <div className="relative w-full flex overflow-x-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
-          
-          <div className="flex w-[200%] animate-[scroll_30s_linear_infinite]">
-            {[...partnerLogos, ...partnerLogos].map((logo, i) => (
-              <div key={i} className="flex-none w-1/4 sm:w-1/6 md:w-[12.5%] px-4 flex justify-center items-center">
-                <span className="text-slate-300 hover:text-slate-800 font-bold text-xl transition-colors cursor-pointer whitespace-nowrap grayscale hover:grayscale-0">
-                  {logo}
-                </span>
-              </div>
+      </section>
+
+      <section className="overflow-hidden border-y border-slate-200 bg-[#f6f8fb] py-14">
+        <div className="mx-auto mb-8 max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <p className="text-sm font-black text-slate-500">{dict.home.partners}</p>
+        </div>
+        <div className="relative flex w-full overflow-hidden">
+          <div className="absolute left-0 top-0 z-10 h-full w-28 bg-gradient-to-r from-[#f6f8fb] to-transparent" />
+          <div className="absolute right-0 top-0 z-10 h-full w-28 bg-gradient-to-l from-[#f6f8fb] to-transparent" />
+          <div className="flex min-w-full animate-[scroll_32s_linear_infinite] gap-8 px-4">
+            {[...partnerLogos, ...partnerLogos].map((logo, index) => (
+              <span key={`${logo}-${index}`} className="flex min-w-48 items-center justify-center border border-slate-200 bg-white px-8 py-5 text-lg font-black text-slate-400 transition-colors hover:text-slate-950">
+                {logo}
+              </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 7. Industrial CTA */}
-      <section className="relative py-32 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/yanghui/images/grid.svg')] opacity-[0.05]"></div>
-        
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <section className="relative overflow-hidden bg-white py-24 lg:py-32">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
-              {dict.home.cta.title}
-            </h2>
-            <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
-              {dict.home.cta.desc}
-            </p>
+            <div className="mb-6 flex items-center gap-4">
+              <span className="h-px w-14 bg-cyan-500" />
+              <span className="text-sm font-black text-cyan-700">CONTACT</span>
+            </div>
+            <h2 className="max-w-4xl text-4xl font-black leading-tight text-slate-950 md:text-5xl">{dict.home.cta.title}</h2>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">{dict.home.cta.desc}</p>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <Link
               href={`/${lang}/contact`}
-              className="group inline-flex items-center px-10 py-5 bg-blue-600 text-white font-bold uppercase tracking-widest hover:bg-blue-500 transition-colors"
+              className="group inline-flex h-16 items-center bg-slate-950 px-8 text-base font-black text-white transition-colors hover:bg-cyan-700"
             >
               {dict.home.cta.button}
-              <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
         </div>

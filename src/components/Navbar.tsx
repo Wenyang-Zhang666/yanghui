@@ -50,7 +50,7 @@ export default function Navbar({ lang, dict }: { lang: string; dict: Dictionary 
 
   return (
     <nav className={`fixed top-0 z-50 w-full border-b backdrop-blur-xl transition-all duration-300 ${navShell}`}>
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-20 max-w-[1580px] items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href={`/${lang}`} className="flex min-w-0 items-center" onClick={() => setIsOpen(false)}>
           <BrandLogo lang={lang} inverted={isFloating} />
         </Link>
@@ -106,7 +106,7 @@ export default function Navbar({ lang, dict }: { lang: string; dict: Dictionary 
 
       {isOpen && (
         <div className="border-t border-slate-200 bg-white px-4 pb-5 pt-3 shadow-2xl lg:hidden">
-          <div className="mx-auto grid max-w-7xl gap-2">
+          <div className="mx-auto grid max-w-[1580px] gap-2">
             {navLinks.map((link) => (
               <Link
                 key={link.href}

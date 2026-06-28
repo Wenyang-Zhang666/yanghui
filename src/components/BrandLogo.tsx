@@ -12,27 +12,28 @@ export default function BrandLogo({
   className = '',
 }: BrandLogoProps) {
   const primaryText = lang === 'zh' ? '阳惠洋科技' : 'YANGHUIYANG';
-  const secondaryText = lang === 'zh' ? 'YANGHUIYANG TECH' : 'PORT & SHIPPING TECH';
+  const secondaryText = lang === 'zh' ? 'YHY MARITIME SERVICES' : 'MARITIME PROJECT SERVICES';
   const textColor = inverted ? 'text-white' : 'text-slate-950';
-  const mutedColor = inverted ? 'text-cyan-100/75' : 'text-slate-500';
+  const mutedColor = inverted ? 'text-slate-300' : 'text-slate-500';
 
   return (
     <span className={`inline-flex items-center gap-3 ${className}`}>
-      <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden border border-cyan-300/40 bg-slate-950 shadow-[0_14px_30px_rgba(8,47,73,0.18)]">
-        <svg viewBox="0 0 64 64" aria-hidden="true" className="h-12 w-12">
+      <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden border border-slate-300 bg-[#071426] shadow-[0_14px_28px_rgba(15,23,42,0.16)]">
+        <svg viewBox="0 0 96 96" aria-hidden="true" className="h-12 w-12">
           <defs>
-            <linearGradient id="yhy-logo-glow" x1="8" x2="56" y1="8" y2="56" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#22d3ee" />
-              <stop offset="0.55" stopColor="#2563eb" />
-              <stop offset="1" stopColor="#f59e0b" />
+            <linearGradient id="yhy-brand-gradient" x1="16" x2="80" y1="12" y2="84" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#24b6c8" />
+              <stop offset="0.55" stopColor="#1c4f8f" />
+              <stop offset="1" stopColor="#c99a32" />
             </linearGradient>
           </defs>
-          <path d="M32 5 54 16v17c0 13.7-8.9 22.3-22 26C18.9 55.3 10 46.7 10 33V16L32 5Z" fill="#08111f" />
-          <path d="M32 8.7 50.5 18v14.3c0 11.2-7.1 18.5-18.5 22-11.4-3.5-18.5-10.8-18.5-22V18L32 8.7Z" fill="url(#yhy-logo-glow)" opacity="0.28" />
-          <path d="M20 20.5 32 45l12-24.5" fill="none" stroke="url(#yhy-logo-glow)" strokeWidth="5.2" strokeLinecap="square" strokeLinejoin="miter" />
-          <path d="M18 38.5c5.2-3.8 10.7-3.8 16.7 0 4.4 2.8 8 2.8 11.3.2" fill="none" stroke="#e0f2fe" strokeWidth="2.6" strokeLinecap="square" />
-          <path d="M32 17v28" fill="none" stroke="#f8fafc" strokeWidth="2.2" strokeLinecap="square" opacity="0.9" />
-          <path d="M17 17h8M39 17h8M17 48h7M40 48h7" stroke="#fbbf24" strokeWidth="2" strokeLinecap="square" opacity="0.9" />
+          <rect x="5" y="5" width="86" height="86" fill="#071426" />
+          <path d="M12 16h72v50c0 9.8-5.7 16-16.5 16H12V16Z" fill="#0b1f36" />
+          <path d="M15 19h66v44.8c0 8.2-4.3 13.2-13.2 15.2H15V19Z" fill="url(#yhy-brand-gradient)" opacity="0.2" />
+          <text x="48" y="52" textAnchor="middle" fontFamily="Arial Black, Arial, sans-serif" fontSize="28" fontWeight="900" fill="#f8fafc">YHY</text>
+          <path d="M18 64c9-5.4 18-5.3 27 .2 8 4.9 16.2 4.9 25-.2" fill="none" stroke="#26c6da" strokeWidth="4" strokeLinecap="square" />
+          <path d="M18 75h49c6.6 0 10.8-2.8 13-8" fill="none" stroke="#d8a63a" strokeWidth="3" strokeLinecap="square" />
+          <path d="M12 16h72M12 16v66M22 16v-6M70 16v-6M84 32h6M84 58h6" stroke="#5bb8c8" strokeWidth="2" opacity="0.65" />
         </svg>
       </span>
 

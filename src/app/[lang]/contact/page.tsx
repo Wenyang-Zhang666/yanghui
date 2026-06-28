@@ -21,7 +21,7 @@ export default async function Contact({ params }: { params: Promise<{ lang: stri
   return (
     <div className="min-h-screen bg-[#f6f8fb] pt-20">
       <section className="relative flex min-h-[520px] items-center overflow-hidden bg-slate-950">
-        <Image src="/yanghui/images/port-command-center.png" alt={dict.contact.title} fill className="object-cover" priority />
+        <Image src="/yanghui/images/port-dispatch-real.png" alt={dict.contact.title} fill className="object-cover" priority />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.92),rgba(2,6,23,0.62)_50%,rgba(2,6,23,0.18))]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(34,211,238,0.11)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:64px_64px]" />
 

@@ -10,16 +10,38 @@
     "contact": "Contact Us"
   },
   "home": {
-    "slogan": "Empowering Port & Shipping with Technology",
-    "description": "Shanghai Yanghuiyang Technology Co., Ltd. serves port groups, shipowners, ship management companies, and maritime asset transaction participants with integrated services across ship operations, port informatization, used vessel technical assessment, and transaction risk judgement.",
-    "businessSectors": "Three Business Pillars",
-    "businessIntro": "From vessel lifecycle operations to smart port security and pre-transaction technical due diligence, we combine engineering experience, data capability, and transaction judgement to support high-stakes maritime decisions.",
+    "slogan": "Project Collaboration Services for Port Groups",
+    "description": "For coastal port groups such as Jiangsu Yancheng Port Holding Group, Shanghai Yanghuiyang provides technical consulting, on-site survey, system implementation, and risk judgement support around green smart port operations, vessel operation assurance, maritime asset management, and project delivery.",
+    "businessSectors": "Practical Cooperation Modules",
+    "businessIntro": "We turn port-site operations, vessel services, green energy, safety management, and maritime asset transactions into project modules that can be investigated, piloted, implemented, and accepted.",
     "shipOperations": "Ship Operations",
     "shipOperationsDesc": "Covering ship repair, technical management, and spare parts supply, providing you with one-stop, high-standard ship operation support.",
     "portTechnology": "Port & IT",
     "portTechnologyDesc": "Focusing on port network security, intelligent monitoring software development, and ship-shore data integration to enhance operational efficiency.",
     "secondhandTrading": "Used Vessel Transaction Services",
-    "secondhandTradingDesc": "Providing dedicated technical survey and assessment for used vessel sale and purchase, full-cycle transaction advisory, and maritime asset transaction risk judgement to clarify condition, pricing, and delivery risks.",
+    "secondhandTradingDesc": "Providing dedicated technical survey and assessment, full-cycle transaction advisory, and maritime asset risk judgement for vessel acquisition, disposal, renewal, and financing decisions.",
+    "cooperation": {
+      "title": "Cooperation Directions for Yancheng Port Scenarios",
+      "desc": "For coastal port areas, inland port nodes, sea-river intermodal logistics, and green smart port construction, we recommend low-risk, verifiable pilot projects with demonstration value.",
+      "items": [
+        {
+          "title": "Green Port & Shore Power O&M",
+          "desc": "Inspection, energy records, issue closure, and ship-shore coordination for sustainable shore power operations."
+        },
+        {
+          "title": "Port Safety & Dispatch Informatization",
+          "desc": "Lightweight pilots connecting video, equipment, operation plans, and ship-shore information before expanding to integrated dashboards."
+        },
+        {
+          "title": "Ship Repair & Spares Support",
+          "desc": "Maintenance planning, spare parts supply, certificate alerts, and technical management for port craft and partner fleets."
+        },
+        {
+          "title": "Maritime Asset Survey & Risk",
+          "desc": "Condition survey, repair budget, and transaction risk opinion for vessel acquisition, disposal, leasing, and cooperative operations."
+        }
+      ]
+    },
     "advantages": "Our Advantages",
     "advantagesIntro": "We connect marine engineering, port informatization, compliance management, and transaction judgement in one operating view, reducing information gaps and improving decision quality.",
     "adv1Title": "Industry Expertise",
@@ -48,8 +70,8 @@
       "button": "Consult Now"
     },
     "aboutSummary": {
-      "title": "Leading the Future of Port & Shipping",
-      "desc": "We are more than a service provider. We are a long-term partner for port and shipping companies in digital transformation, operational assurance, and maritime asset transaction decisions. By combining marine engineering, port IT capability, data analysis, and risk assessment methods, we turn complex business needs into clear, executable, and traceable solutions."
+      "title": "Starting from Field Problems, Ending with Delivery",
+      "desc": "We aim to become an external collaboration team for port groups on specialized projects. By combining marine engineering experience, port IT capability, on-site survey methods, and asset risk assessment, we help turn complex needs into clear research, pilot, implementation, and acceptance paths."
     }
   },
   "footer": {
@@ -130,7 +152,7 @@
     }
   },
   "seo": {
-    "title": "Shanghai Yanghuiyang Technology - Ship Operations, Port IT & Used Vessel Transaction Services",
-    "description": "Shanghai Yanghuiyang Technology provides ship repair, technical management, spare parts supply, port cybersecurity, intelligent monitoring software, used vessel technical survey, and maritime asset transaction risk judgement services."
+    "title": "Shanghai Yanghuiyang Technology - Port Group Project Collaboration & Maritime Asset Services",
+    "description": "Shanghai Yanghuiyang Technology provides green smart port operations support, port safety and dispatch informatization, ship repair and spare parts services, used vessel technical survey, and maritime asset transaction risk judgement for port groups and maritime enterprises."
   }
 }

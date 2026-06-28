@@ -19,7 +19,7 @@ export default async function News({ params }: { params: Promise<{ lang: string 
         lang === 'zh'
           ? '项目涵盖船员临时居所、厨房、冷库、办公及多媒体会议室等空间升级，围绕船检规范、海事环保要求和现场交付质量进行系统化管理。'
           : 'The project covered crew accommodation, kitchen, cold storage, office, and multimedia meeting spaces, with systematic management around survey standards, maritime environmental requirements, and delivery quality.',
-      image: '/yanghui/images/ship-operations-premium.png',
+      image: '/yanghui/images/ship-maintenance-real.png',
     },
     {
       label: lang === 'zh' ? '能力更新' : 'Capability Update',
@@ -32,7 +32,7 @@ export default async function News({ params }: { params: Promise<{ lang: string 
         lang === 'zh'
           ? '围绕二手船买卖场景，阳惠洋新增专项技术勘验评估、交易全程业务咨询和航运资产交易风险研判服务，帮助客户在谈判、定价和交割前形成专业依据。'
           : 'For used vessel sale and purchase scenarios, Yanghuiyang now provides dedicated technical assessment, full-cycle transaction advisory, and maritime asset risk judgement to support negotiation, pricing, and delivery decisions.',
-      image: '/yanghui/images/secondhand-trading.png',
+      image: '/yanghui/images/vessel-survey-real.png',
     },
     {
       label: lang === 'zh' ? '技术动态' : 'Technology',
@@ -45,14 +45,14 @@ export default async function News({ params }: { params: Promise<{ lang: string 
         lang === 'zh'
           ? '公司持续推进港口工业控制系统安全加固、智能监控与船岸数据集成能力建设，为关键港航基础设施提供更稳健的数字化支撑。'
           : 'The company continues to advance industrial control security hardening, intelligent monitoring, and ship-shore data integration capabilities for critical maritime infrastructure.',
-      image: '/yanghui/images/port-command-center.png',
+      image: '/yanghui/images/port-dispatch-real.png',
     },
   ];
 
   return (
     <div className="min-h-screen bg-[#f6f8fb] pt-20">
       <section className="relative flex min-h-[520px] items-center overflow-hidden bg-slate-950">
-        <Image src="/yanghui/images/ship-operations-premium.png" alt={dict.navigation.news} fill className="object-cover" priority />
+        <Image src="/yanghui/images/yancheng-port-hero.png" alt={dict.navigation.news} fill className="object-cover" priority />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.92),rgba(2,6,23,0.62)_50%,rgba(2,6,23,0.18))]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(34,211,238,0.11)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:64px_64px]" />
 

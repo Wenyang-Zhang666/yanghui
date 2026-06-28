@@ -60,7 +60,7 @@ export default function ServicesContent({ lang, dict }: { lang: string; dict: Di
         lang === 'zh'
           ? '以机务经验和供应链协同为核心，覆盖维修、管理、备件与证书预警，让船舶运行保持稳定、合规、可控。'
           : 'Centered on technical management and supply-chain coordination, covering repair, management, spares, and certificate alerts for stable and compliant vessel operations.',
-      image: '/yanghui/images/ship-operations-premium.png',
+      image: '/yanghui/images/ship-maintenance-real.png',
       icon: Ship,
       accent: 'cyan',
       services: shipServices,
@@ -74,7 +74,7 @@ export default function ServicesContent({ lang, dict }: { lang: string; dict: Di
         lang === 'zh'
           ? '围绕港口网络、工控系统、智能监控与船岸数据链路，构建面向运营现场的数字化安全能力。'
           : 'Building field-oriented digital security capabilities around port networks, industrial control systems, intelligent monitoring, and ship-shore data links.',
-      image: '/yanghui/images/port-command-center.png',
+      image: '/yanghui/images/port-dispatch-real.png',
       icon: Network,
       accent: 'blue',
       services: portServices,
@@ -85,7 +85,7 @@ export default function ServicesContent({ lang, dict }: { lang: string; dict: Di
       eyebrow: lang === 'zh' ? '航运资产交易勘验与风控' : 'Maritime Asset Transaction Risk Control',
       title: dict.services.secondhand.title,
       desc: dict.services.secondhand.overview,
-      image: '/yanghui/images/secondhand-trading.png',
+      image: '/yanghui/images/vessel-survey-real.png',
       icon: Scale,
       accent: 'amber',
       services: transactionServices,
@@ -101,7 +101,7 @@ export default function ServicesContent({ lang, dict }: { lang: string; dict: Di
   return (
     <div className="min-h-screen bg-slate-950 text-white">
       <section className="relative flex min-h-[640px] items-center overflow-hidden pt-20">
-        <Image src="/yanghui/images/secondhand-trading.png" alt={dict.navigation.services} fill className="object-cover" priority />
+        <Image src="/yanghui/images/yancheng-port-hero.png" alt={dict.navigation.services} fill className="object-cover" priority />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.94),rgba(2,6,23,0.68)_48%,rgba(2,6,23,0.28))]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(34,211,238,0.12)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
@@ -114,7 +114,7 @@ export default function ServicesContent({ lang, dict }: { lang: string; dict: Di
           <div className="max-w-4xl">
             <div className="mb-7 inline-flex items-center border border-white/15 bg-white/[0.08] px-4 py-2 text-sm font-semibold text-cyan-50 backdrop-blur">
               <span className="mr-3 h-2 w-10 bg-amber-400" />
-              {lang === 'zh' ? '工程能力 · 数据能力 · 交易风控' : 'Engineering · Data · Transaction Risk'}
+              {lang === 'zh' ? '港区现场 · 绿色运维 · 项目协同' : 'Port Site · Green O&M · Project Collaboration'}
             </div>
             <h1 className="text-5xl font-black leading-tight md:text-7xl">{dict.navigation.services}</h1>
             <p className="mt-7 max-w-3xl text-lg leading-9 text-slate-200">{dict.home.businessIntro}</p>

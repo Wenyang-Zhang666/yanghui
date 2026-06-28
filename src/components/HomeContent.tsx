@@ -40,7 +40,7 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: Dictio
   const businessCards = [
     {
       href: `/${lang}/services#ship`,
-      image: '/yanghui/images/ship-operations-premium.png',
+      image: '/yanghui/images/ship-maintenance-real.png',
       icon: Anchor,
       title: dict.home.shipOperations,
       desc: dict.home.shipOperationsDesc,
@@ -53,7 +53,7 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: Dictio
     },
     {
       href: `/${lang}/services#port`,
-      image: '/yanghui/images/port-command-center.png',
+      image: '/yanghui/images/port-dispatch-real.png',
       icon: Network,
       title: dict.home.portTechnology,
       desc: dict.home.portTechnologyDesc,
@@ -66,7 +66,7 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: Dictio
     },
     {
       href: `/${lang}/services#secondhand`,
-      image: '/yanghui/images/secondhand-trading.png',
+      image: '/yanghui/images/vessel-survey-real.png',
       icon: FileSearch,
       title: dict.home.secondhandTrading,
       desc: dict.home.secondhandTradingDesc,
@@ -139,6 +139,53 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: Dictio
         </div>
       </section>
 
+      <section className="bg-white py-24 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+              <div className="mb-6 flex items-center gap-4">
+                <span className="h-px w-14 bg-cyan-600" />
+                <span className="text-sm font-black text-cyan-700">COOPERATION SCENARIOS</span>
+              </div>
+              <h2 className="text-4xl font-black leading-tight text-slate-950 md:text-5xl">{dict.home.cooperation.title}</h2>
+              <p className="mt-6 text-lg leading-9 text-slate-600">{dict.home.cooperation.desc}</p>
+              <div className="mt-8 overflow-hidden border border-slate-200">
+                <Image
+                  src="/yanghui/images/shore-power-inspection.png"
+                  alt={dict.home.cooperation.title}
+                  width={1672}
+                  height={941}
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+              className="grid gap-px border border-slate-200 bg-slate-200 sm:grid-cols-2"
+            >
+              {dict.home.cooperation.items.map((item, index) => {
+                const icons = [ClipboardCheck, Network, Ship, Scale];
+                const ScenarioIcon = icons[index] ?? ClipboardCheck;
+                return (
+                  <motion.article key={item.title} variants={fadeUp} className="bg-[#f8fafc] p-7">
+                    <div className="mb-8 flex items-center justify-between">
+                      <ScenarioIcon className="h-9 w-9 text-cyan-700" strokeWidth={1.6} />
+                      <span className="text-4xl font-black text-slate-200">0{index + 1}</span>
+                    </div>
+                    <h3 className="text-xl font-black leading-tight text-slate-950">{item.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-slate-600">{item.desc}</p>
+                  </motion.article>
+                );
+              })}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <section className="relative bg-white py-24 lg:py-32">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
           <motion.div
@@ -148,7 +195,7 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: Dictio
             transition={{ duration: 0.75 }}
             className="relative min-h-[520px] overflow-hidden border border-slate-200"
           >
-            <Image src="/yanghui/images/port-command-center.png" alt={dict.home.aboutSummary.title} fill className="object-cover" />
+            <Image src="/yanghui/images/port-dispatch-real.png" alt={dict.home.aboutSummary.title} fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/18 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 grid grid-cols-3 border-t border-white/20 bg-slate-950/58 backdrop-blur">
               {[

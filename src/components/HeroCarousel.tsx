@@ -5,7 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import Link from 'next/link';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight, FileSearch, Network, Ship } from 'lucide-react';
 import type { Dictionary } from '@/types/dictionary';
 
@@ -32,25 +32,25 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: Dicti
 
   const slides = [
     {
-      image: '/yanghui/images/port-command-center.png',
+      image: '/yanghui/images/yancheng-port-hero.png',
       icon: Network,
-      eyebrow: lang === 'zh' ? '港航科技综合服务商' : 'Maritime Technology Partner',
+      eyebrow: lang === 'zh' ? '面向沿海港口集团合作场景' : 'For Coastal Port Group Cooperation',
       title: dict.home.slogan,
       railTitle: lang === 'zh' ? '港航综合服务' : 'Integrated Maritime Services',
       subtitle: dict.home.description,
       href: `/${lang}/services`,
-      metric: lang === 'zh' ? '1000+' : '1000+',
-      metricLabel: dict.home.stats.projects,
+      metric: lang === 'zh' ? '4类' : '4',
+      metricLabel: lang === 'zh' ? '建议合作切入方向' : 'Cooperation Directions',
       accent: 'bg-cyan-300',
       glow: 'from-cyan-300/30',
       steps:
         lang === 'zh'
-          ? ['船舶运营保障', '港口数字化安全', '资产交易风控', '项目闭环交付']
-          : ['Ship Operations', 'Port Digital Security', 'Asset Risk Control', 'Closed-Loop Delivery'],
-      railDesc: lang === 'zh' ? '工程、数据与交易视角一体化' : 'Engineering, data, and transaction judgement',
+          ? ['绿色岸电运维', '港区安全调度', '船舶运营保障', '资产勘验风控']
+          : ['Green Shore Power', 'Port Safety Dispatch', 'Ship Operations', 'Asset Survey & Risk'],
+      railDesc: lang === 'zh' ? '围绕港区现场形成可试点方案' : 'Pilot-ready plans around port-site scenarios',
     },
     {
-      image: '/yanghui/images/ship-operations-premium.png',
+      image: '/yanghui/images/ship-maintenance-real.png',
       icon: Ship,
       eyebrow: lang === 'zh' ? '船舶全生命周期运营保障' : 'Vessel Lifecycle Assurance',
       title: dict.home.shipOperations,
@@ -68,7 +68,7 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: Dicti
       railDesc: lang === 'zh' ? '修理、机务、供应与合规联动' : 'Repair, technical, supply, and compliance',
     },
     {
-      image: '/yanghui/images/secondhand-trading.png',
+      image: '/yanghui/images/vessel-survey-real.png',
       icon: FileSearch,
       eyebrow: lang === 'zh' ? '新增业务 · 二手船交易服务' : 'New Service · Used Vessel Transaction',
       title: dict.home.secondhandTrading,
@@ -93,7 +93,7 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: Dicti
         {slides.map((slide, index) => {
           const Icon = slide.icon;
           return (
-            <div key={slide.title} className="relative h-full min-w-0 flex-[0_0_100%]">
+            <div key={slide.title} className="relative h-full min-w-0 flex-[0_0_100%] overflow-hidden">
               <motion.div
                 initial={{ scale: 1.08 }}
                 animate={{ scale: selectedIndex === index ? 1 : 1.08 }}
@@ -110,24 +110,20 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: Dicti
                 />
               </motion.div>
 
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.96),rgba(2,6,23,0.68)_42%,rgba(2,6,23,0.2)_72%,rgba(2,6,23,0.78))]" />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(34,211,238,0.13)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:72px_72px] opacity-42" />
-              <div className={`absolute inset-y-0 left-0 w-[64vw] bg-gradient-to-r ${slide.glow} via-transparent to-transparent opacity-80`} />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.94),rgba(2,6,23,0.66)_42%,rgba(2,6,23,0.18)_72%,rgba(2,6,23,0.72))]" />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:96px_96px] opacity-28" />
+              <div className={`absolute inset-y-0 left-0 w-[60vw] bg-gradient-to-r ${slide.glow} via-transparent to-transparent opacity-45`} />
               <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-slate-950 via-slate-950/58 to-transparent" />
               <div className="absolute left-0 top-20 hidden h-px w-full bg-gradient-to-r from-transparent via-cyan-200/35 to-transparent xl:block" />
 
               <div className="absolute inset-0 flex items-center">
                 <div className="mx-auto grid w-full max-w-[1580px] items-center gap-10 px-4 pt-20 sm:px-6 lg:grid-cols-[minmax(0,1fr)_460px] lg:px-8 xl:grid-cols-[minmax(0,1fr)_540px] xl:gap-16 xl:pt-10">
-                  <AnimatePresence mode="wait">
-                    {selectedIndex === index && (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 28 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -18 }}
-                        transition={{ duration: 0.7, ease: 'easeOut' }}
-                        className="max-w-5xl"
-                      >
+                  <motion.div
+                    initial={{ opacity: 0, y: 28 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: 'easeOut' }}
+                    className="max-w-5xl"
+                  >
                         <div className="mb-7 flex flex-wrap items-center gap-4">
                           <div className="inline-flex items-center border border-white/15 bg-white/[0.08] px-4 py-2 text-sm font-semibold text-cyan-50 backdrop-blur">
                             <span className={`mr-3 h-2 w-10 ${slide.accent}`} />
@@ -160,24 +156,18 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: Dicti
                             {dict.home.cta.button}
                           </Link>
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  </motion.div>
 
-                  <AnimatePresence mode="wait">
-                    {selectedIndex === index && (
-                      <motion.div
-                        key={`panel-${index}`}
-                        initial={{ opacity: 0, x: 28 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 18 }}
-                        transition={{ duration: 0.7, delay: 0.1 }}
-                        className="hidden border border-white/15 bg-slate-950/62 p-6 shadow-[0_32px_110px_rgba(0,0,0,0.42)] backdrop-blur-xl lg:block xl:p-8"
-                      >
+                  <motion.div
+                    initial={{ opacity: 0, x: 28 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.1 }}
+                    className="hidden border border-white/15 bg-slate-950/62 p-6 shadow-[0_32px_110px_rgba(0,0,0,0.42)] backdrop-blur-xl lg:block xl:p-8"
+                  >
                         <div className="flex items-center justify-between border-b border-white/10 pb-5">
                           <div>
-                            <p className="text-xs font-semibold text-slate-400">YHY COMMAND</p>
-                            <p className="mt-1 text-2xl font-black text-white">{lang === 'zh' ? '项目响应中枢' : 'Response Center'}</p>
+                            <p className="text-xs font-semibold text-slate-400">PROJECT STARTER</p>
+                            <p className="mt-1 text-2xl font-black text-white">{lang === 'zh' ? '合作启动清单' : 'Cooperation Checklist'}</p>
                           </div>
                           <div className="flex h-14 w-14 items-center justify-center bg-white text-slate-950">
                             <Icon className="h-7 w-7" />
@@ -209,8 +199,8 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: Dicti
 
                         <div className="mt-7 border border-white/10 bg-white/[0.04] p-5">
                           <div className="mb-4 flex items-center justify-between text-xs font-semibold text-slate-400">
-                            <span>{lang === 'zh' ? '能力覆盖' : 'Capability Coverage'}</span>
-                            <span>LIVE MAP</span>
+                            <span>{lang === 'zh' ? '项目要点' : 'Project Priorities'}</span>
+                            <span>{lang === 'zh' ? '可试点' : 'PILOT READY'}</span>
                           </div>
                           <div className="grid grid-cols-6 gap-2">
                             {Array.from({ length: 18 }).map((_, cell) => (
@@ -221,9 +211,7 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: Dicti
                             ))}
                           </div>
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  </motion.div>
                 </div>
               </div>
             </div>

@@ -35,7 +35,7 @@ export default function AboutContent({ lang, dict }: { lang: string; dict: Dicti
   return (
     <div className="min-h-screen overflow-hidden bg-[#f6f8fb] pt-20">
       <section className="relative flex min-h-[560px] items-center overflow-hidden bg-slate-950">
-        <Image src="/yanghui/images/port-command-center.png" alt={dict.about.title} fill className="object-cover" priority />
+        <Image src="/yanghui/images/yancheng-port-hero.png" alt={dict.about.title} fill className="object-cover" priority />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.92),rgba(2,6,23,0.64)_52%,rgba(2,6,23,0.22))]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(34,211,238,0.11)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
@@ -92,7 +92,7 @@ export default function AboutContent({ lang, dict }: { lang: string; dict: Dicti
           </div>
 
           <div className="relative min-h-[520px] lg:col-span-6">
-            <Image src="/yanghui/images/ship-operations-premium.png" alt={dict.about.companyProfile} fill className="object-cover" />
+            <Image src="/yanghui/images/shore-power-inspection.png" alt={dict.about.companyProfile} fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/72 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8 right-8 border border-white/15 bg-slate-950/72 p-6 text-white backdrop-blur">
               <BadgeCheck className="mb-4 h-8 w-8 text-amber-300" />

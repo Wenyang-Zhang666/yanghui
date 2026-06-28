@@ -101,7 +101,7 @@ export default function ServicesContent({ lang, dict }: { lang: string; dict: Di
   return (
     <div className="min-h-screen bg-slate-950 text-white">
       <section className="relative flex min-h-[640px] items-center overflow-hidden pt-20">
-        <Image src="/yanghui/images/yancheng-port-hero.png" alt={dict.navigation.services} fill className="object-cover" priority />
+        <Image src="/yanghui/images/coastal-port-hero.png" alt={dict.navigation.services} fill className="object-cover" priority />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.94),rgba(2,6,23,0.68)_48%,rgba(2,6,23,0.28))]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(34,211,238,0.12)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.07)_1px,transparent_1px)] bg-[size:64px_64px]" />
 

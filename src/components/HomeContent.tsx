@@ -145,7 +145,7 @@ export default function HomeContent({ lang, dict }: { lang: string; dict: Dictio
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <div className="mb-6 flex items-center gap-4">
                 <span className="h-px w-14 bg-cyan-600" />
-                <span className="text-sm font-black text-cyan-700">COOPERATION SCENARIOS</span>
+                <span className="text-sm font-black text-cyan-700">SERVICE CAPABILITIES</span>
               </div>
               <h2 className="text-4xl font-black leading-tight text-slate-950 md:text-5xl">{dict.home.cooperation.title}</h2>
               <p className="mt-6 text-lg leading-9 text-slate-600">{dict.home.cooperation.desc}</p>

@@ -32,15 +32,15 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: Dicti
 
   const slides = [
     {
-      image: '/yanghui/images/yancheng-port-hero.png',
+      image: '/yanghui/images/coastal-port-hero.png',
       icon: Network,
-      eyebrow: lang === 'zh' ? '面向沿海港口集团合作场景' : 'For Coastal Port Group Cooperation',
+      eyebrow: lang === 'zh' ? '沿海港口集团专项服务场景' : 'Specialized Port Group Services',
       title: dict.home.slogan,
       railTitle: lang === 'zh' ? '港航综合服务' : 'Integrated Maritime Services',
       subtitle: dict.home.description,
       href: `/${lang}/services`,
       metric: lang === 'zh' ? '4类' : '4',
-      metricLabel: lang === 'zh' ? '建议合作切入方向' : 'Cooperation Directions',
+      metricLabel: lang === 'zh' ? '重点服务方向' : 'Service Directions',
       accent: 'bg-cyan-300',
       glow: 'from-cyan-300/30',
       steps:
@@ -167,7 +167,7 @@ export default function HeroCarousel({ lang, dict }: { lang: string; dict: Dicti
                         <div className="flex items-center justify-between border-b border-white/10 pb-5">
                           <div>
                             <p className="text-xs font-semibold text-slate-400">PROJECT STARTER</p>
-                            <p className="mt-1 text-2xl font-black text-white">{lang === 'zh' ? '合作启动清单' : 'Cooperation Checklist'}</p>
+                            <p className="mt-1 text-2xl font-black text-white">{lang === 'zh' ? '项目启动清单' : 'Project Checklist'}</p>
                           </div>
                           <div className="flex h-14 w-14 items-center justify-center bg-white text-slate-950">
                             <Icon className="h-7 w-7" />
